@@ -284,6 +284,14 @@
       outline: none;
       box-shadow: 0 0 0 3px rgba(255,90,0,0.1);
     }
+    /* تنسيق رسالة المساعدة أسفل حقل الهاتف */
+    .input-group small {
+      display: block;
+      color: #ff5a00;
+      font-size: 0.7rem;
+      margin-top: 6px;
+      font-weight: 500;
+    }
     .submit-btn {
       background: #ff5a00;
       width: 100%;
@@ -484,7 +492,7 @@
     </div>
   </section>
 
-  <!-- نموذج التقديم (بيانات) -->
+  <!-- نموذج التقديم (بيانات) مع التعديل المطلوب في حقل الهاتف -->
   <section id="formPage" class="section">
     <div class="form-container">
       <div class="age-notice">
@@ -496,9 +504,19 @@
           <label><i class="fas fa-user"></i> الاسم بالكامل</label>
           <input type="text" name="الاسم" placeholder="مثال: أحمد محمود علي" required>
         </div>
+        <!-- حقل الهاتف المعدل بالكامل: أرقام فقط، 11 رقم، واتساب -->
         <div class="input-group">
-          <label><i class="fas fa-phone-alt"></i> رقم الهاتف (واتساب)</label>
-          <input type="tel" name="الهاتف" placeholder="01xxxxxxxxx" pattern="01[0-9]{9}" title="رقم مصري 11 رقم يبدأ بـ 01" required>
+          <label><i class="fab fa-whatsapp"></i> رقم الهاتف (واتساب)</label>
+          <input type="tel" 
+                 name="الهاتف" 
+                 placeholder="01xxxxxxxxx" 
+                 pattern="01[0-9]{9}" 
+                 inputmode="numeric" 
+                 maxlength="11" 
+                 title="يرجى إدخال رقم مصري مفعل على واتساب مكون من 11 رقمًا ويبدأ بـ 01" 
+                 required
+                 oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0,11)">
+          <small>⚡ يجب أن يكون الرقم مفعلاً على واتساب للتواصل السريع (11 رقم مصري، يبدأ بـ 01)</small>
         </div>
         <div class="input-group">
           <label><i class="fas fa-map-marker-alt"></i> منطقة الخدمة</label>
@@ -520,7 +538,7 @@
           <span class="back-link" onclick="showHome()"><i class="fas fa-chevron-right"></i> العودة للرئيسية</span>
         </div>
       </form>
-      <p style="font-size: 0.7rem; text-align: center; margin-top: 20px; color:#888;">بإرسال البيانات فأنت توافق على سياسة الاستخدام، سيتم التواصل خلال 24 ساعة.</p>
+      <p style="font-size: 0.7rem; text-align: center; margin-top: 20px; color:#888;">بإرسال البيانات فأنت توافق على سياسة الاستخدام، سيتم التواصل عبر الواتساب خلال 24 ساعة.</p>
     </div>
   </section>
 
@@ -563,6 +581,16 @@
     const submitBtn = document.getElementById('submitBtn');
     const originalText = submitBtn.innerHTML;
     
+    // التحقق الإضافي من رقم الهاتف (11 رقم وأرقام فقط)
+    const phoneInput = form.querySelector('input[name="الهاتف"]');
+    const phoneValue = phoneInput.value.trim();
+    const phoneRegex = /^01[0-9]{9}$/; // يبدأ بـ01 ويتبعه 9 أرقام بالضبط (إجمالي 11)
+    if (!phoneRegex.test(phoneValue)) {
+      alert('⚠️ يرجى إدخال رقم هاتف مصري صحيح مكون من 11 رقمًا ويبدأ بـ 01 (مثال: 01234567890)');
+      phoneInput.focus();
+      return;
+    }
+    
     // حالة التحميل لتحسين التفاعل
     submitBtn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> جاري إرسال البيانات...';
     submitBtn.disabled = true;
@@ -593,7 +621,7 @@
       submitBtn.innerHTML = originalText;
       submitBtn.disabled = false;
     } finally {
-      // نعيد تمكين الزر فقط إذا لم ننتقل للنجاح (لكن في حالة النجاح لا داعي لإعادة تمكينه)
+      // نعيد تمكين الزر فقط إذا لم ننتقل للنجاح (في حالة النجاح لا داعي لإعادة تمكينه)
       if (document.getElementById('formPage').style.display !== 'none') {
         submitBtn.disabled = false;
         submitBtn.innerHTML = originalText;
@@ -607,9 +635,8 @@
     formElement.addEventListener('submit', handleFormSubmit);
   }
 
-  // تحسين صغير: لمنع أي إرسال تقليدي تاني
+  // التأكد من أن الصفحة الرئيسية ظاهرة فقط في البداية
   window.onload = function() {
-    // التأكد من أن الصفحة الرئيسية ظاهرة فقط في البداية
     document.getElementById('homePage').style.display = 'block';
     document.getElementById('formPage').style.display = 'none';
     document.getElementById('successPage').style.display = 'none';
