@@ -492,19 +492,19 @@
     </div>
   </section>
 
-  <!-- نموذج التقديم (بيانات) مع التعديل المطلوب في حقل الهاتف -->
+  <!-- نموذج التقديم (بيانات) - تم التعديل للإرسال إلى واتساب -->
   <section id="formPage" class="section">
     <div class="form-container">
       <div class="age-notice">
         <i class="fas fa-exclamation-triangle"></i> تنبيه: مطلوب عمر 18 سنة فأكثر. الوظيفة مرنة وتناسب الجميع.
       </div>
       <h2 style="text-align: center; color: #ff5a00; margin-bottom: 20px; font-weight: 800;">بيانات الانضمام لفريق طلبات</h2>
-      <form id="applicationForm" action="https://formsubmit.co/rabeea.mohamed.mohamed@gmail.com" method="POST">
+      <form id="applicationForm">
         <div class="input-group">
           <label><i class="fas fa-user"></i> الاسم بالكامل</label>
           <input type="text" name="الاسم" placeholder="مثال: أحمد محمود علي" required>
         </div>
-        <!-- حقل الهاتف المعدل بالكامل: أرقام فقط، 11 رقم، واتساب -->
+        <!-- حقل الهاتف: أرقام فقط، 11 رقم، واتساب -->
         <div class="input-group">
           <label><i class="fab fa-whatsapp"></i> رقم الهاتف (واتساب)</label>
           <input type="tel" 
@@ -529,25 +529,21 @@
             <option>التجمع الخامس</option><option>المنصورة</option><option>بورسعيد</option>
           </select>
         </div>
-        <!-- إضافات FormSubmit -->
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_subject" value="طلب انضمام جديد من موقع طلبات">
-        <button type="submit" class="submit-btn" id="submitBtn">إرسال البيانات <i class="fas fa-paper-plane"></i></button>
+        <button type="submit" class="submit-btn" id="submitBtn">إرسال البيانات عبر واتساب <i class="fab fa-whatsapp"></i></button>
         <div style="text-align: center; margin-top: 20px;">
           <span class="back-link" onclick="showHome()"><i class="fas fa-chevron-right"></i> العودة للرئيسية</span>
         </div>
       </form>
-      <p style="font-size: 0.7rem; text-align: center; margin-top: 20px; color:#888;">بإرسال البيانات فأنت توافق على سياسة الاستخدام، سيتم التواصل عبر الواتساب خلال 24 ساعة.</p>
+      <p style="font-size: 0.7rem; text-align: center; margin-top: 20px; color:#888;">بإرسال البيانات سيتم تحويلك إلى واتساب مع تعبئة بياناتك تلقائياً، ثم اضغط إرسال ليتم التواصل معك خلال 24 ساعة.</p>
     </div>
   </section>
 
-  <!-- صفحة نجاح الإرسال -->
+  <!-- صفحة نجاح الإرسال (ستظهر بعد التوجيه إلى واتساب) -->
   <section id="successPage" class="section">
     <div class="success-card">
-      <i class="fas fa-check-circle"></i>
-      <h2>🎉 تم إرسال طلبك بنجاح!</h2>
-      <p style="font-size: 1rem; margin: 15px 0;">تم استلام بياناتك وسيقوم فريق التوظيف في <strong>شركة طلبات</strong> بالتواصل معك عبر الواتساب خلال ساعات (نفس اليوم غالباً).</p>
+      <i class="fab fa-whatsapp" style="color:#25D366;"></i>
+      <h2>🎉 تم توجيهك إلى واتساب!</h2>
+      <p style="font-size: 1rem; margin: 15px 0;">سيتم فتح محادثة واتساب مع فريق التوظيف في <strong>شركة طلبات</strong>، فقط اضغط على "إرسال" ليصلك الرد خلال ساعات.</p>
       <p style="background: #f0f9f0; padding: 10px; border-radius: 20px;"><i class="fas fa-clock"></i> استعد لبدء شغلك المرن بدون أي رسوم!</p>
       <button class="btn-primary" style="margin-top: 28px; max-width: 100%;" onclick="showHome()">العودة للصفحة الرئيسية <i class="fas fa-home"></i></button>
     </div>
@@ -559,6 +555,9 @@
 </div>
 
 <script>
+  // رقم واتساب المستهدف (بدون + أو صفر إضافي، نضعه بالصيغة الدولية)
+  const TARGET_PHONE = "201027428959";  // 01027428959 -> 201027428959
+
   // وظائف التنقل بين الشاشات
   function showForm() {
     document.getElementById('homePage').style.display = 'none';
@@ -574,65 +573,65 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  // معالجة إرسال النموذج عبر fetch (تجربة مستخدم محسنة بدون إعادة تحميل)
-  async function handleFormSubmit(event) {
+  // معالجة إرسال النموذج وإرسال البيانات إلى واتساب (فتح محادثة مع النص المنسق)
+  function handleWhatsAppSubmit(event) {
     event.preventDefault();
     const form = event.target;
     const submitBtn = document.getElementById('submitBtn');
-    const originalText = submitBtn.innerHTML;
     
-    // التحقق الإضافي من رقم الهاتف (11 رقم وأرقام فقط)
+    // الحصول على القيم
+    const nameInput = form.querySelector('input[name="الاسم"]');
     const phoneInput = form.querySelector('input[name="الهاتف"]');
-    const phoneValue = phoneInput.value.trim();
-    const phoneRegex = /^01[0-9]{9}$/; // يبدأ بـ01 ويتبعه 9 أرقام بالضبط (إجمالي 11)
-    if (!phoneRegex.test(phoneValue)) {
+    const regionSelect = form.querySelector('select[name="المنطقة"]');
+    
+    const fullName = nameInput.value.trim();
+    const userPhone = phoneInput.value.trim();
+    const region = regionSelect.value;
+    
+    // التحقق من صحة المدخلات
+    if (!fullName) {
+      alert('⚠️ يرجى إدخال الاسم بالكامل');
+      nameInput.focus();
+      return;
+    }
+    
+    const phoneRegex = /^01[0-9]{9}$/;
+    if (!phoneRegex.test(userPhone)) {
       alert('⚠️ يرجى إدخال رقم هاتف مصري صحيح مكون من 11 رقمًا ويبدأ بـ 01 (مثال: 01234567890)');
       phoneInput.focus();
       return;
     }
     
-    // حالة التحميل لتحسين التفاعل
-    submitBtn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> جاري إرسال البيانات...';
-    submitBtn.disabled = true;
-
-    const formData = new FormData(form);
-    
-    try {
-      const response = await fetch(form.action, {
-        method: 'POST',
-        body: formData,
-        headers: { 'Accept': 'application/json' }
-      });
-      // بغض النظر عن استجابة الخادم (FormSubmit يعيد json أو نص) نعتبر العملية ناجحة إذا تم الإرسال
-      if (response.ok || response.status === 200) {
-        // إظهار صفحة النجاح
-        document.getElementById('formPage').style.display = 'none';
-        document.getElementById('successPage').style.display = 'block';
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      } else {
-        // في حال فشل HTTP
-        alert('حدث خطأ تقني بسيط، يرجى المحاولة مرة أخرى أو مراسلتنا على الواتساب.');
-        submitBtn.innerHTML = originalText;
-        submitBtn.disabled = false;
-      }
-    } catch (error) {
-      console.error(error);
-      alert('عذراً، فشل الاتصال. يرجى التأكد من اتصال الإنترنت والمحاولة مجدداً.');
-      submitBtn.innerHTML = originalText;
-      submitBtn.disabled = false;
-    } finally {
-      // نعيد تمكين الزر فقط إذا لم ننتقل للنجاح (في حالة النجاح لا داعي لإعادة تمكينه)
-      if (document.getElementById('formPage').style.display !== 'none') {
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = originalText;
-      }
+    if (!region || region === "") {
+      alert('⚠️ يرجى اختيار منطقة الخدمة');
+      regionSelect.focus();
+      return;
     }
+    
+    // إنشاء نص الرسالة للواتساب
+    const message = `📢 *طلب انضمام جديد من موقع طلبات* 📢%0A%0A👤 *الاسم:* ${fullName}%0A📞 *رقم المتقدم:* ${userPhone}%0A📍 *منطقة الخدمة:* ${region}%0A%0A✅ يرجى التواصل معه لتأكيد التفعيل.`;
+    
+    // بناء رابط واتساب
+    const whatsappUrl = `https://wa.me/${TARGET_PHONE}?text=${message}`;
+    
+    // إظهار صفحة النجاح ثم فتح الواتساب في نافذة جديدة
+    document.getElementById('formPage').style.display = 'none';
+    document.getElementById('successPage').style.display = 'block';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    
+    // فتح رابط واتساب (سينتقل المستخدم للتطبيق أو الويب)
+    window.open(whatsappUrl, '_blank');
+    
+    // (اختياري) إعادة تعيين النموذج بعد فترة قصيرة
+    setTimeout(() => {
+      form.reset();
+    }, 500);
   }
 
   // ربط الحدث للنموذج
   const formElement = document.getElementById('applicationForm');
   if (formElement) {
-    formElement.addEventListener('submit', handleFormSubmit);
+    formElement.addEventListener('submit', handleWhatsAppSubmit);
   }
 
   // التأكد من أن الصفحة الرئيسية ظاهرة فقط في البداية
