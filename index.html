@@ -83,6 +83,7 @@
       text-align: center;
       box-shadow: 0 4px 12px rgba(0,0,0,0.03);
       border: 1px solid #ffe0d0;
+      transition: transform 0.1s ease;
     }
     .stat-card i {
       font-size: 1.8rem;
@@ -99,6 +100,11 @@
       font-weight: 800;
       color: #ff5a00;
       margin-top: 6px;
+    }
+    .stat-card .small-note {
+      font-size: 0.65rem;
+      color: #6c757d;
+      margin-top: 4px;
     }
 
     .section-title {
@@ -270,7 +276,7 @@
       transform: scale(0.94);
     }
 
-    /* ========== صفحة النموذج والآراء (من الكود الثاني) ========== */
+    /* ========== صفحة النموذج والآراء ========== */
     .form-container {
       background: white;
       border-radius: 32px;
@@ -445,10 +451,26 @@
       <div class="badge-free"><i class="fas fa-gem"></i> التقديم مجاني 0 جنيه | تفعيل سريع</div>
     </div>
 
+    <!-- بطاقات الدخل والبونصات محدثة بشكل حماسي وواضح -->
     <div class="stats-grid">
-      <div class="stat-card"><i class="fas fa-money-bill-wave"></i><h3>💰 الدخل الشهري</h3><div class="value">30,000 ج.م</div></div>
-      <div class="stat-card"><i class="fas fa-gift"></i><h3>🎁 البونص الترحيبي</h3><div class="value">1,250 ج.م</div></div>
-      <div class="stat-card"><i class="fas fa-calendar-week"></i><h3>⭐ البونص الأسبوعي</h3><div class="value">مكافآت</div></div>
+      <div class="stat-card">
+        <i class="fas fa-money-bill-trend-up"></i>
+        <h3>🔥 الدخل الشهري</h3>
+        <div class="value">30,000+ ج.م</div>
+        <div class="small-note">وأكثر حسب شغلك وجهدك! 💪</div>
+      </div>
+      <div class="stat-card">
+        <i class="fas fa-gift"></i>
+        <h3>🎁 البونص الترحيبي</h3>
+        <div class="value">1,250 ج.م</div>
+        <div class="small-note">بعد إتمام أول 250 أوردر 🚀</div>
+      </div>
+      <div class="stat-card">
+        <i class="fas fa-calendar-week"></i>
+        <h3>⭐ البونص الأسبوعي</h3>
+        <div class="value">مكافآت متغيرة</div>
+        <div class="small-note">متجددة كل أسبوع حسب أدائك 🎯</div>
+      </div>
     </div>
 
     <div class="section-title"><i class="fas fa-star-of-life"></i> مميزات العمل</div>
@@ -473,7 +495,7 @@
           <tr><td class="zone-name">معادي</td><td>33</td><td>31</td><td>29</td><td>27</td></tr>
           <tr><td class="zone-name">مهندسين</td><td>32</td><td>30</td><td>28</td><td>26</td></tr>
         </tbody>
-      </table>
+       </table>
     </div>
     <div class="bonus-note"><i class="fas fa-tachometer-alt"></i> <strong>نظام مكافأة المسافات (للموتوسيكل):</strong><br> • من 2 كم إلى 5 كم: زيادة <strong>1 جنيه</strong> لكل كيلو<br> • بعد الـ 5 كم: زيادة <strong>2 جنيه</strong> لكل كيلو<br> <i class="fas fa-calculator"></i> مثال: أوردر مسافة 7 كم في باتش 1 → <strong>43 ج</strong></div>
 
@@ -487,7 +509,7 @@
           <tr><td class="zone-name">مدينة نصر / مصر الجديدة / عين شمس / أكتوبر / زايد / تحرير</td><td>25</td><td>23</td><td>21</td><td>19</td></tr>
           <tr><td class="zone-name">مهندسين / معادي</td><td>24</td><td>22</td><td>20</td><td>18</td></tr>
         </tbody>
-      </table>
+       </table>
     </div>
 
     <div class="section-title"><i class="fas fa-folder-open"></i> الأوراق المطلوبة (مجاني)</div>
@@ -592,14 +614,11 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  // زر التقديم في الصفحة الرئيسية
   document.getElementById('showFormBtn').addEventListener('click', showFormPage);
-  // زر العودة من صفحة النموذج
   document.getElementById('backToHomeBtn').addEventListener('click', showMainPage);
-  // زر العودة من صفحة النجاح
   document.getElementById('successBackBtn').addEventListener('click', showMainPage);
 
-  // زر فيسبوك (يفتح الرابط المطلوب)
+  // زر فيسبوك
   const facebookBtn = document.getElementById('facebookBtn');
   if (facebookBtn) {
     facebookBtn.addEventListener('click', () => {
@@ -607,8 +626,8 @@
     });
   }
 
-  // معالجة إرسال النموذج إلى واتساب
-  const TARGET_PHONE = "201027428959"; // 01027428959
+  // إرسال النموذج إلى واتساب
+  const TARGET_PHONE = "201027428959";
   const form = document.getElementById('applicationForm');
 
   async function handleWhatsAppSubmit(e) {
@@ -629,7 +648,6 @@
     const message = `📢 *طلب انضمام جديد من موقع طلبات* 📢%0A%0A👤 *الاسم:* ${fullName}%0A📞 *رقم المتقدم:* ${userPhone}%0A📍 *منطقة الخدمة:* ${region}%0A%0A✅ يرجى التواصل معه لتأكيد التفعيل.`;
     const whatsappUrl = `https://wa.me/${TARGET_PHONE}?text=${message}`;
 
-    // إظهار صفحة النجاح ثم فتح الواتساب
     showSuccessPage();
     window.open(whatsappUrl, '_blank');
     form.reset();
