@@ -3,251 +3,279 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
-  <title>طلبات مصر | وظائف توصيل مرنة - سجل مجاناً</title>
-  <!-- Font Awesome 6 (أيقونات خفيفة وسريعة للجوال) -->
+  <title>Talabat Careers | تطبيق التوظيف المتكامل</title>
+  <!-- Font Awesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <!-- خط كايرو مناسب للشاشات العربية -->
+  <!-- Google Font: Cairo -->
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
     }
 
     body {
       font-family: 'Cairo', sans-serif;
-      background: #fef7f0;
-      color: #1e1e2f;
+      background: #fefaf5;
+      color: #1e2a32;
       line-height: 1.5;
-      -webkit-tap-highlight-color: transparent;
+      padding: 12px 0 40px;
     }
 
-    /* كل التصميم مخصص للجوال 100% */
-    .container {
-      max-width: 100%;
+    /* الحاوية الرئيسية – كأنها تطبيق هاتف */
+    .app-container {
+      max-width: 550px;
+      margin: 0 auto;
+      background: #fefaf5;
+      border-radius: 32px;
       overflow-x: hidden;
+      box-shadow: 0 0 20px rgba(0,0,0,0.02);
     }
 
-    /* زر كبير ومريح للجوال */
-    .btn-primary {
-      background: #ff5a00;
+    /* ========== الصفحة الرئيسية (تفاصيل الوظيفة) ========== */
+    .hero-section {
+      background: linear-gradient(135deg, #ff5a00 0%, #e64a00 100%);
+      border-radius: 28px;
+      padding: 28px 20px;
+      margin: 16px 12px 24px;
       color: white;
-      border: none;
-      padding: 16px 28px;
-      font-size: 1.35rem;
+      text-align: center;
+      box-shadow: 0 12px 25px rgba(255, 90, 0, 0.25);
+    }
+    .hero-section h1 {
+      font-size: 1.6rem;
       font-weight: 800;
-      border-radius: 60px;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      box-shadow: 0 8px 18px rgba(255, 90, 0, 0.3);
-      display: inline-block;
-      text-align: center;
-      width: 100%;
-      max-width: 280px;
-      letter-spacing: 0.5px;
-    }
-
-    .btn-primary:active {
-      transform: scale(0.97);
-      background: #e14b00;
-      box-shadow: 0 4px 12px rgba(255, 90, 0, 0.4);
-    }
-
-    .btn-secondary {
-      background: transparent;
-      border: 2px solid #ff5a00;
-      color: #ff5a00;
-      font-weight: 700;
-      padding: 12px 20px;
-      border-radius: 50px;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: 0.2s;
-      width: 100%;
-      text-align: center;
-    }
-
-    .btn-secondary:active {
-      background: #ff5a0010;
-    }
-
-    /* الهيدر */
-    .header {
-      background: #ff5a00;
-      padding: 18px 20px;
-      text-align: center;
-      color: white;
-      font-size: 1.5rem;
-      font-weight: 800;
-      letter-spacing: -0.2px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      margin-bottom: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 10px;
       flex-wrap: wrap;
     }
-    .header i {
-      font-size: 1.7rem;
-      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+    .hero-section p {
+      font-size: 0.9rem;
+      opacity: 0.95;
     }
-    .badge-talabat {
+    .badge-free {
       background: rgba(255,255,255,0.2);
-      border-radius: 40px;
-      padding: 5px 12px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      margin-right: 8px;
-    }
-
-    /* الأقسام */
-    .section {
-      padding: 28px 18px;
-      max-width: 550px;
-      margin: 0 auto;
-    }
-
-    .home-content {
-      display: flex;
-      flex-direction: column;
-      gap: 28px;
-    }
-
-    /* شعار شركة طلبات وتوظيف */
-    .company-tag {
-      background: #fff0e6;
+      backdrop-filter: blur(4px);
       border-radius: 60px;
-      padding: 10px 18px;
-      text-align: center;
+      padding: 6px 14px;
       display: inline-block;
-      width: auto;
-      margin: 0 auto 5px;
+      font-size: 0.7rem;
       font-weight: 700;
-      color: #ff5a00;
-      font-size: 0.85rem;
+      margin-top: 12px;
     }
 
-    .hero h1 {
-      font-size: 2rem;
-      font-weight: 800;
-      color: #1e2a32;
-      margin-bottom: 12px;
-      line-height: 1.3;
-    }
-    .hero p {
-      font-size: 1rem;
-      color: #4a5568;
-      margin-bottom: 8px;
-    }
-    .highlight {
-      color: #ff5a00;
-      font-weight: 800;
-    }
-
-    /* أيقونات المميزات */
-    .icons {
+    .stats-grid {
       display: flex;
-      justify-content: space-around;
-      gap: 15px;
-      margin: 20px 0 10px;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 0 12px 28px;
     }
-    .icon-box {
+    .stat-card {
+      flex: 1;
       background: white;
       border-radius: 28px;
-      padding: 16px 8px;
+      padding: 16px 10px;
       text-align: center;
-      flex: 1;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.03);
-      border: 1px solid rgba(255,90,0,0.15);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+      border: 1px solid #ffe0d0;
     }
-    .icon-box i {
-      font-size: 2.5rem;
+    .stat-card i {
+      font-size: 1.8rem;
       color: #ff5a00;
       margin-bottom: 8px;
     }
-    .icon-box p {
+    .stat-card h3 {
+      font-size: 0.85rem;
       font-weight: 700;
-      font-size: 0.9rem;
+      color: #4a5568;
+    }
+    .stat-card .value {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #ff5a00;
       margin-top: 6px;
     }
 
-    /* قسم الآراء (5 كومنتات) */
-    .testimonials-title {
-      font-size: 1.6rem;
+    .section-title {
+      font-size: 1.4rem;
       font-weight: 800;
-      margin: 20px 0 15px;
-      text-align: center;
-      color: #1e2a32;
-    }
-    .testimonials-grid {
+      margin: 28px 12px 16px;
       display: flex;
-      flex-direction: column;
-      gap: 18px;
-      margin: 15px 0 20px;
+      align-items: center;
+      gap: 10px;
     }
-    .testimonial-card {
+    .section-title i {
+      color: #ff5a00;
+      font-size: 1.5rem;
+    }
+    .section-title:after {
+      content: '';
+      flex: 1;
+      height: 2px;
+      background: #ffe0d0;
+      margin-right: 8px;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 0 12px 20px;
+    }
+    .feature-item {
       background: white;
-      border-radius: 28px;
-      padding: 18px;
-      box-shadow: 0 6px 14px rgba(0,0,0,0.05);
-      border-right: 5px solid #ff5a00;
-      transition: all 0.2s;
-    }
-    .testimonial-header {
+      border-radius: 24px;
+      padding: 12px;
       display: flex;
       align-items: center;
       gap: 12px;
-      margin-bottom: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+      border: 1px solid #f0e2d6;
     }
-    .testimonial-avatar {
-      width: 48px;
-      height: 48px;
-      background: #ffe6d5;
-      border-radius: 60px;
+    .feature-item i {
+      font-size: 1.4rem;
+      color: #ff5a00;
+      min-width: 32px;
+      text-align: center;
+    }
+    .feature-item span {
+      font-weight: 600;
+      font-size: 0.8rem;
+      line-height: 1.3;
+    }
+
+    .table-wrapper {
+      overflow-x: auto;
+      margin: 0 12px 20px;
+      border-radius: 24px;
+      background: white;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+      -webkit-overflow-scrolling: touch;
+    }
+    .pricing-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.75rem;
+      min-width: 480px;
+    }
+    .pricing-table th {
+      background: #ff5a00;
+      color: white;
+      padding: 12px 8px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .pricing-table td {
+      padding: 10px 6px;
+      text-align: center;
+      border-bottom: 1px solid #f0e2d6;
+      font-weight: 500;
+    }
+    .zone-name {
+      font-weight: 800;
+      background-color: #fef1e8;
+      text-align: right;
+      padding-right: 12px;
+      white-space: nowrap;
+    }
+
+    .bonus-note {
+      background: #eef2ff;
+      border-radius: 20px;
+      padding: 14px;
+      margin: 8px 12px 20px;
+      border-right: 4px solid #ff5a00;
+      font-size: 0.8rem;
+    }
+
+    .docs-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 0 12px 24px;
+    }
+    .doc-card {
+      background: white;
+      border-radius: 28px;
+      padding: 16px 12px;
+      flex: 1;
+      min-width: 110px;
+      text-align: center;
+      border: 1px solid #ffe0d0;
+    }
+    .doc-card i {
+      font-size: 1.6rem;
+      color: #ff5a00;
+      margin-bottom: 8px;
+    }
+    .doc-card h4 {
+      font-size: 0.9rem;
+      font-weight: 800;
+    }
+
+    /* الأزرار الرئيسية */
+    .cta-row {
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: bold;
-      font-size: 1.3rem;
-      color: #ff5a00;
+      gap: 18px;
+      margin: 30px 12px 20px;
+      flex-wrap: wrap;
     }
-    .testimonial-info h4 {
-      font-size: 1rem;
+    .btn-primary {
+      background: #25D366;
+      color: white;
+      border: none;
+      padding: 16px 24px;
+      font-size: 1.1rem;
       font-weight: 800;
-      margin-bottom: 4px;
+      border-radius: 60px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      transition: 0.2s;
+      box-shadow: 0 8px 18px rgba(37, 211, 102, 0.3);
+      flex: 2;
+      min-width: 200px;
+      justify-content: center;
     }
-    .stars {
-      color: #ffb800;
-      font-size: 0.8rem;
-      letter-spacing: 2px;
+    .btn-primary i {
+      font-size: 1.4rem;
     }
-    .testimonial-text {
-      font-size: 0.9rem;
-      color: #2d3748;
-      line-height: 1.45;
+    .btn-primary:active {
+      transform: scale(0.97);
     }
-    .testimonial-text i {
-      color: #ff5a00;
-      margin-left: 5px;
+    .btn-circle {
+      background: #1877f2;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 2rem;
+      transition: 0.2s;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      cursor: pointer;
+      border: none;
+    }
+    .btn-circle:active {
+      transform: scale(0.94);
     }
 
-    .free-note {
-      background: #e9f7ef;
-      border-radius: 20px;
-      padding: 14px;
-      text-align: center;
-      font-weight: 700;
-      color: #1f7b4d;
-      margin: 10px 0;
-      font-size: 0.9rem;
-    }
-
-    /* نموذج التقديم */
+    /* ========== صفحة النموذج والآراء (من الكود الثاني) ========== */
     .form-container {
       background: white;
       border-radius: 32px;
       padding: 28px 22px;
+      margin: 16px 12px;
       box-shadow: 0 20px 35px rgba(0,0,0,0.08);
     }
     .age-notice {
@@ -284,7 +312,6 @@
       outline: none;
       box-shadow: 0 0 0 3px rgba(255,90,0,0.1);
     }
-    /* تنسيق رسالة المساعدة أسفل حقل الهاتف */
     .input-group small {
       display: block;
       color: #ff5a00;
@@ -303,11 +330,6 @@
       color: white;
       margin-top: 12px;
       cursor: pointer;
-      transition: 0.2s;
-    }
-    .submit-btn:active {
-      transform: scale(0.98);
-      background: #e14b00;
     }
     .back-link {
       display: inline-block;
@@ -319,204 +341,188 @@
       font-size: 0.9rem;
     }
 
-    /* صفحة النجاح */
+    /* التعليقات (آراء الناجحين) */
+    .testimonials-title {
+      font-size: 1.6rem;
+      font-weight: 800;
+      margin: 20px 12px 15px;
+      text-align: center;
+      color: #1e2a32;
+    }
+    .testimonials-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      margin: 15px 12px 20px;
+    }
+    .testimonial-card {
+      background: white;
+      border-radius: 28px;
+      padding: 18px;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.05);
+      border-right: 5px solid #ff5a00;
+    }
+    .testimonial-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .testimonial-avatar {
+      width: 48px;
+      height: 48px;
+      background: #ffe6d5;
+      border-radius: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      color: #ff5a00;
+    }
+    .testimonial-info h4 {
+      font-size: 1rem;
+      font-weight: 800;
+    }
+    .stars {
+      color: #ffb800;
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+    }
+    .testimonial-text {
+      font-size: 0.9rem;
+      color: #2d3748;
+      line-height: 1.45;
+    }
+
+    .free-note {
+      background: #e9f7ef;
+      border-radius: 20px;
+      padding: 14px;
+      text-align: center;
+      font-weight: 700;
+      color: #1f7b4d;
+      margin: 10px 12px;
+      font-size: 0.9rem;
+    }
+
     .success-card {
       background: white;
       border-radius: 40px;
       padding: 40px 25px;
       text-align: center;
+      margin: 40px 12px;
     }
     .success-card i {
       font-size: 4rem;
       color: #28a745;
-      margin-bottom: 20px;
-    }
-    .success-card h2 {
-      color: #1e2a32;
-      margin-bottom: 12px;
     }
 
     .footer {
       text-align: center;
       padding: 24px 16px;
-      font-size: 0.75rem;
+      font-size: 0.65rem;
       color: #aaa;
+      border-top: 1px solid #f0e2d6;
+      margin-top: 10px;
     }
 
-    /* مخفى */
-    #formPage, #successPage {
+    /* إخفاء الصفحات */
+    .page {
       display: none;
     }
-
-    /* تحسين اللمس */
-    button, .back-link, .btn-primary, .submit-btn {
-      cursor: pointer;
-      touch-action: manipulation;
-    }
-
-    /* تحسينات للجوال فقط */
-    @media (max-width: 480px) {
-      .hero h1 {
-        font-size: 1.8rem;
-      }
-      .btn-primary {
-        font-size: 1.2rem;
-        padding: 14px 20px;
-      }
-      .testimonial-card {
-        padding: 15px;
-      }
-      .icon-box i {
-        font-size: 2rem;
-      }
+    .active-page {
+      display: block;
     }
   </style>
 </head>
 <body>
-<div class="container">
-  <header class="header">
-    <i class="fas fa-motorcycle"></i> 
-    <span>طلبات مصر | توظيف فوري</span>
-    <span class="badge-talabat">وظائف مرنة</span>
-  </header>
-
-  <!-- الصفحة الرئيسية مع الآراء والتفاصيل -->
-  <section id="homePage" class="section">
-    <div class="home-content">
-      <div style="text-align: center;">
-        <div class="company-tag">
-          <i class="fas fa-check-circle"></i> توظيف رسمي في شركة طلبات
-        </div>
-      </div>
-      <div class="hero">
-        <h1>أنت القائد <span class="highlight">لوقتك ودخلك</span></h1>
-        <p>مندوب توصيل مع طلبات – دخل يومي، عمولات مجزية، مرونة تامة تناسب حياتك. سجل مجاناً وابدأ خلال 24 ساعة!</p>
-      </div>
-
-      <div class="icons">
-        <div class="icon-box">
-          <i class="fas fa-motorcycle"></i>
-          <p>توصيل سريع</p>
-        </div>
-        <div class="icon-box">
-          <i class="fas fa-clock"></i>
-          <p>أوقات مرنة</p>
-        </div>
-        <div class="icon-box">
-          <i class="fas fa-money-bill-wave"></i>
-          <p>كاش يومي</p>
-        </div>
-      </div>
-
-      <!-- 5 تعليقات حقيقية لزيادة المصداقية -->
-      <div class="testimonials-title">
-        <i class="fas fa-comment-dots"></i> آراء الناجحين مع طلبات
-      </div>
-      <div class="testimonials-grid">
-        <!-- كومنت 1 -->
-        <div class="testimonial-card">
-          <div class="testimonial-header">
-            <div class="testimonial-avatar"><i class="fas fa-user-check"></i></div>
-            <div class="testimonial-info">
-              <h4>محمد رجب</h4>
-              <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-            </div>
-          </div>
-          <div class="testimonial-text">
-            <i class="fas fa-quote-right"></i> “استلمت شغلي في نفس اليوم اللي قدمت فيه! بدون أي رسوم، والمرونة رهيبة، بدأت أوصل وأكسب على طول. شكراً طلبات.”
-          </div>
-        </div>
-        <!-- كومنت 2 -->
-        <div class="testimonial-card">
-          <div class="testimonial-header">
-            <div class="testimonial-avatar"><i class="fas fa-female"></i></div>
-            <div class="testimonial-info">
-              <h4>سارة عبدالله</h4>
-              <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
-            </div>
-          </div>
-          <div class="testimonial-text">
-            <i class="fas fa-quote-right"></i> “أوقات العمل تناسبني كطالبة، ساعات إضافية بعد الجامعة، دخلي اليومي زاد 40% في أول أسبوع. ولا غالي ولا مقابل مادي، مجاني 100%.”
-          </div>
-        </div>
-        <!-- كومنت 3 -->
-        <div class="testimonial-card">
-          <div class="testimonial-header">
-            <div class="testimonial-avatar"><i class="fas fa-user-astronaut"></i></div>
-            <div class="testimonial-info">
-              <h4>أحمد السيد</h4>
-              <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-            </div>
-          </div>
-          <div class="testimonial-text">
-            <i class="fas fa-quote-right"></i> “كنت محتاج شغل بجانب دراستي، طلبات قدمت لي أفضل حل. استلمت التجهيزات خلال ساعات، ومرونة الشفتات خلتني أوازن بين كل حاجة. تحسن دخلي 50%.”
-          </div>
-        </div>
-        <!-- كومنت 4 -->
-        <div class="testimonial-card">
-          <div class="testimonial-header">
-            <div class="testimonial-avatar"><i class="fas fa-bicycle"></i></div>
-            <div class="testimonial-info">
-              <h4>كريم مصطفى</h4>
-              <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-            </div>
-          </div>
-          <div class="testimonial-text">
-            <i class="fas fa-quote-right"></i> “أفضل قرار هو الانضمام لطلبات. قبول فوري، بدأت الشغل في نفس اليوم بدون مصاريف. الدخل اليومي ثابت ومرن، أنا مدير وقتي.”
-          </div>
-        </div>
-        <!-- كومنت 5 -->
-        <div class="testimonial-card">
-          <div class="testimonial-header">
-            <div class="testimonial-avatar"><i class="fas fa-chalkboard-user"></i></div>
-            <div class="testimonial-info">
-              <h4>محمود علي</h4>
-              <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-            </div>
-          </div>
-          <div class="testimonial-text">
-            <i class="fas fa-quote-right"></i> “قدمت الصبح، اتصلوا بي بعد الظهر واستلمت الشغل مساءً! حاجة ولا في الأحلام. بدون مقابل مادي وكل اللي تحتاجه موتوسيكل أو عجلة. شكراً طلبات.”
-          </div>
-        </div>
-      </div>
-
-      <!-- تأكيد مجانية التقديم -->
-      <div class="free-note">
-        <i class="fas fa-shield-alt"></i> 100% مجاني | لا توجد رسوم خفية | تقديم آمن
-      </div>
-
-      <div style="text-align: center; margin: 20px 0 20px;">
-        <button class="btn-primary" onclick="showForm()">ابدأ التقديم الآن مجاناً <i class="fas fa-arrow-left"></i></button>
-        <p style="font-size: 0.75rem; margin-top: 12px; color: #777;">*آلاف المندوبين انضموا خلال 2026</p>
-      </div>
+<div class="app-container">
+  <!-- ========== الصفحة الرئيسية (تفاصيل الوظيفة) ========== -->
+  <div id="mainPage" class="page active-page">
+    <div class="hero-section">
+      <h1><i class="fas fa-motorcycle"></i> Talabat Careers <span style="font-size: 0.8rem;">Delivery Egypt</span></h1>
+      <p>بوابتك للعمل مع أقوى فريق توصيل في مصر</p>
+      <div class="badge-free"><i class="fas fa-gem"></i> التقديم مجاني 0 جنيه | تفعيل سريع</div>
     </div>
-  </section>
 
-  <!-- نموذج التقديم (بيانات) - تم التعديل للإرسال إلى واتساب -->
-  <section id="formPage" class="section">
+    <div class="stats-grid">
+      <div class="stat-card"><i class="fas fa-money-bill-wave"></i><h3>💰 الدخل الشهري</h3><div class="value">30,000 ج.م</div></div>
+      <div class="stat-card"><i class="fas fa-gift"></i><h3>🎁 البونص الترحيبي</h3><div class="value">1,250 ج.م</div></div>
+      <div class="stat-card"><i class="fas fa-calendar-week"></i><h3>⭐ البونص الأسبوعي</h3><div class="value">مكافآت</div></div>
+    </div>
+
+    <div class="section-title"><i class="fas fa-star-of-life"></i> مميزات العمل</div>
+    <div class="features-grid">
+      <div class="feature-item"><i class="fas fa-bolt"></i><span>تفعيل الحساب خلال 24 ساعة</span></div>
+      <div class="feature-item"><i class="fas fa-clock"></i><span>نظام شيفتات مرن تماماً</span></div>
+      <div class="feature-item"><i class="fas fa-headset"></i><span>دعم فني ومشرفين 24 ساعة</span></div>
+      <div class="feature-item"><i class="fas fa-coins"></i><span>قبض أسبوعي (الاثنين → الأحد)</span></div>
+      <div class="feature-item"><i class="fas fa-map-marked-alt"></i><span>تطبيق عربي + خرائط دقيقة</span></div>
+      <div class="feature-item"><i class="fas fa-chart-line"></i><span>متابعة الأرباح لحظة بلحظة</span></div>
+    </div>
+
+    <div class="section-title"><i class="fas fa-motorcycle"></i> تسعيرة الموتوسيكل</div>
+    <div class="table-wrapper">
+      <table class="pricing-table">
+        <thead><tr><th>المنطقة (الزون)</th><th>باتش 1</th><th>باتش 2</th><th>باتش 3</th><th>باتش 4</th></tr></thead>
+        <tbody>
+          <tr><td class="zone-name">تجمع</td><td>39</td><td>37</td><td>35</td><td>33</td></tr>
+          <tr><td class="zone-name">أكتوبر</td><td>37</td><td>35</td><td>33</td><td>31</td></tr>
+          <tr><td class="zone-name">مدينة نصر / مصر الجديدة / عين شمس / هرم / زايد</td><td>36</td><td>34</td><td>32</td><td>30</td></tr>
+          <tr><td class="zone-name">تحرير / اسكندرية</td><td>35</td><td>33</td><td>31</td><td>29</td></tr>
+          <tr><td class="zone-name">معادي</td><td>33</td><td>31</td><td>29</td><td>27</td></tr>
+          <tr><td class="zone-name">مهندسين</td><td>32</td><td>30</td><td>28</td><td>26</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="bonus-note"><i class="fas fa-tachometer-alt"></i> <strong>نظام مكافأة المسافات (للموتوسيكل):</strong><br> • من 2 كم إلى 5 كم: زيادة <strong>1 جنيه</strong> لكل كيلو<br> • بعد الـ 5 كم: زيادة <strong>2 جنيه</strong> لكل كيلو<br> <i class="fas fa-calculator"></i> مثال: أوردر مسافة 7 كم في باتش 1 → <strong>43 ج</strong></div>
+
+    <div class="section-title"><i class="fas fa-bicycle"></i> تسعيرة العجلة (Bicycle)</div>
+    <div class="table-wrapper">
+      <table class="pricing-table">
+        <thead><tr><th>المنطقة (الزون)</th><th>باتش 1</th><th>باتش 2</th><th>باتش 3</th><th>باتش 4</th></tr></thead>
+        <tbody>
+          <tr><td class="zone-name">تجمع / هرم</td><td>27</td><td>25</td><td>23</td><td>21</td></tr>
+          <tr><td class="zone-name">اسكندرية</td><td>26</td><td>24</td><td>22</td><td>20</td></tr>
+          <tr><td class="zone-name">مدينة نصر / مصر الجديدة / عين شمس / أكتوبر / زايد / تحرير</td><td>25</td><td>23</td><td>21</td><td>19</td></tr>
+          <tr><td class="zone-name">مهندسين / معادي</td><td>24</td><td>22</td><td>20</td><td>18</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section-title"><i class="fas fa-folder-open"></i> الأوراق المطلوبة (مجاني)</div>
+    <div class="docs-list">
+      <div class="doc-card"><i class="fas fa-camera"></i><h4>صورة سيلفي</h4><p>خلفية بيضاء</p></div>
+      <div class="doc-card"><i class="fas fa-id-card"></i><h4>البطاقة الشخصية</h4><p>أصل سارية</p></div>
+      <div class="doc-card"><i class="fas fa-tachometer-alt"></i><h4>رخصة المركبة</h4><p>للموتوسيكل فقط</p></div>
+    </div>
+
+    <div class="cta-row">
+      <button class="btn-primary" id="showFormBtn">
+        <i class="fab fa-whatsapp"></i> للتسجيل فورا والتواصل واتس اب من هنا
+      </button>
+      <button class="btn-circle" id="facebookBtn" aria-label="فيسبوك">
+        <i class="fab fa-facebook-f"></i>
+      </button>
+    </div>
+    <div class="free-note"><i class="fas fa-shield-alt"></i> التقديم مجاني بالكامل – بدون أي رسوم إدارية</div>
+    <footer class="footer">© 2026 Talabat Careers Egypt – أقوى فريق توصيل</footer>
+  </div>
+
+  <!-- ========== صفحة النموذج (بيانات التقديم + الآراء) ========== -->
+  <div id="formPage" class="page">
     <div class="form-container">
-      <div class="age-notice">
-        <i class="fas fa-exclamation-triangle"></i> تنبيه: مطلوب عمر 18 سنة فأكثر. الوظيفة مرنة وتناسب الجميع.
-      </div>
+      <div class="age-notice"><i class="fas fa-exclamation-triangle"></i> تنبيه: مطلوب عمر 18 سنة فأكثر. الوظيفة مرنة وتناسب الجميع.</div>
       <h2 style="text-align: center; color: #ff5a00; margin-bottom: 20px; font-weight: 800;">بيانات الانضمام لفريق طلبات</h2>
       <form id="applicationForm">
         <div class="input-group">
           <label><i class="fas fa-user"></i> الاسم بالكامل</label>
           <input type="text" name="الاسم" placeholder="مثال: أحمد محمود علي" required>
         </div>
-        <!-- حقل الهاتف: أرقام فقط، 11 رقم، واتساب -->
         <div class="input-group">
           <label><i class="fab fa-whatsapp"></i> رقم الهاتف (واتساب)</label>
-          <input type="tel" 
-                 name="الهاتف" 
-                 placeholder="01xxxxxxxxx" 
-                 pattern="01[0-9]{9}" 
-                 inputmode="numeric" 
-                 maxlength="11" 
-                 title="يرجى إدخال رقم مصري مفعل على واتساب مكون من 11 رقمًا ويبدأ بـ 01" 
-                 required
-                 oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0,11)">
-          <small>⚡ يجب أن يكون الرقم مفعلاً على واتساب للتواصل السريع (11 رقم مصري، يبدأ بـ 01)</small>
+          <input type="tel" name="الهاتف" placeholder="01xxxxxxxxx" pattern="01[0-9]{9}" inputmode="numeric" maxlength="11" title="رقم مصري 11 رقم يبدأ بـ 01" required oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0,11)">
+          <small>⚡ يجب أن يكون الرقم مفعلاً على واتساب (11 رقم، يبدأ بـ 01)</small>
         </div>
         <div class="input-group">
           <label><i class="fas fa-map-marker-alt"></i> منطقة الخدمة</label>
@@ -531,115 +537,105 @@
         </div>
         <button type="submit" class="submit-btn" id="submitBtn">إرسال البيانات عبر واتساب <i class="fab fa-whatsapp"></i></button>
         <div style="text-align: center; margin-top: 20px;">
-          <span class="back-link" onclick="showHome()"><i class="fas fa-chevron-right"></i> العودة للرئيسية</span>
+          <span class="back-link" id="backToHomeBtn"><i class="fas fa-chevron-right"></i> العودة للرئيسية</span>
         </div>
       </form>
-      <p style="font-size: 0.7rem; text-align: center; margin-top: 20px; color:#888;">بإرسال البيانات سيتم تحويلك إلى واتساب مع تعبئة بياناتك تلقائياً، ثم اضغط إرسال ليتم التواصل معك خلال 24 ساعة.</p>
+      <p style="font-size: 0.7rem; text-align: center; margin-top: 20px; color:#888;">بإرسال البيانات سيتم تحويلك إلى واتساب مع تعبئة بياناتك تلقائياً</p>
     </div>
-  </section>
 
-  <!-- صفحة نجاح الإرسال (ستظهر بعد التوجيه إلى واتساب) -->
-  <section id="successPage" class="section">
+    <!-- آراء الناجحين (5 تعليقات) -->
+    <div class="testimonials-title"><i class="fas fa-comment-dots"></i> آراء الناجحين مع طلبات</div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card"><div class="testimonial-header"><div class="testimonial-avatar"><i class="fas fa-user-check"></i></div><div class="testimonial-info"><h4>محمد رجب</h4><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div></div></div><div class="testimonial-text"><i class="fas fa-quote-right"></i> “استلمت شغلي في نفس اليوم اللي قدمت فيه! بدون أي رسوم، والمرونة رهيبة.”</div></div>
+      <div class="testimonial-card"><div class="testimonial-header"><div class="testimonial-avatar"><i class="fas fa-female"></i></div><div class="testimonial-info"><h4>سارة عبدالله</h4><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div></div></div><div class="testimonial-text"><i class="fas fa-quote-right"></i> “أوقات العمل تناسبني كطالبة، دخلي اليومي زاد 40% في أول أسبوع. مجاني 100%.”</div></div>
+      <div class="testimonial-card"><div class="testimonial-header"><div class="testimonial-avatar"><i class="fas fa-user-astronaut"></i></div><div class="testimonial-info"><h4>أحمد السيد</h4><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div></div></div><div class="testimonial-text"><i class="fas fa-quote-right"></i> “استلمت التجهيزات خلال ساعات، مرونة الشفتات خلتني أوازن بين كل حاجة. تحسن دخلي 50%.”</div></div>
+      <div class="testimonial-card"><div class="testimonial-header"><div class="testimonial-avatar"><i class="fas fa-bicycle"></i></div><div class="testimonial-info"><h4>كريم مصطفى</h4><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div></div></div><div class="testimonial-text"><i class="fas fa-quote-right"></i> “أفضل قرار هو الانضمام لطلبات. قبول فوري، بدأت الشغل في نفس اليوم بدون مصاريف.”</div></div>
+      <div class="testimonial-card"><div class="testimonial-header"><div class="testimonial-avatar"><i class="fas fa-chalkboard-user"></i></div><div class="testimonial-info"><h4>محمود علي</h4><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div></div></div><div class="testimonial-text"><i class="fas fa-quote-right"></i> “قدمت الصبح، اتصلوا بي بعد الظهر واستلمت الشغل مساءً! بدون مقابل مادي.”</div></div>
+    </div>
+    <div class="free-note"><i class="fas fa-shield-alt"></i> 100% مجاني | لا توجد رسوم خفية</div>
+    <footer class="footer">© 2026 طلبات مصر – توظيف رسمي</footer>
+  </div>
+
+  <!-- ========== صفحة النجاح ========== -->
+  <div id="successPage" class="page">
     <div class="success-card">
       <i class="fab fa-whatsapp" style="color:#25D366;"></i>
       <h2>🎉 تم توجيهك إلى واتساب!</h2>
-      <p style="font-size: 1rem; margin: 15px 0;">سيتم فتح محادثة واتساب مع فريق التوظيف في <strong>شركة طلبات</strong>، فقط اضغط على "إرسال" ليصلك الرد خلال ساعات.</p>
-      <p style="background: #f0f9f0; padding: 10px; border-radius: 20px;"><i class="fas fa-clock"></i> استعد لبدء شغلك المرن بدون أي رسوم!</p>
-      <button class="btn-primary" style="margin-top: 28px; max-width: 100%;" onclick="showHome()">العودة للصفحة الرئيسية <i class="fas fa-home"></i></button>
+      <p style="margin: 15px 0;">سيتم فتح محادثة واتساب مع فريق التوظيف، فقط اضغط على "إرسال" ليصلك الرد خلال ساعات.</p>
+      <button class="btn-primary" id="successBackBtn" style="background:#ff5a00; margin-top:20px;">العودة للرئيسية <i class="fas fa-home"></i></button>
     </div>
-  </section>
-
-  <footer class="footer">
-    © 2026 طلبات مصر – جميع الحقوق محفوظة | وظائف توصيل رسمية | لا توجد أي مصاريف للتقديم
-  </footer>
+  </div>
 </div>
 
 <script>
-  // رقم واتساب المستهدف (بدون + أو صفر إضافي، نضعه بالصيغة الدولية)
-  const TARGET_PHONE = "201027428959";  // 01027428959 -> 201027428959
+  // التنقل بين الصفحات
+  const mainPage = document.getElementById('mainPage');
+  const formPage = document.getElementById('formPage');
+  const successPage = document.getElementById('successPage');
 
-  // وظائف التنقل بين الشاشات
-  function showForm() {
-    document.getElementById('homePage').style.display = 'none';
-    document.getElementById('formPage').style.display = 'block';
-    document.getElementById('successPage').style.display = 'none';
+  function showMainPage() {
+    mainPage.classList.add('active-page');
+    formPage.classList.remove('active-page');
+    successPage.classList.remove('active-page');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  function showFormPage() {
+    mainPage.classList.remove('active-page');
+    formPage.classList.add('active-page');
+    successPage.classList.remove('active-page');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  function showSuccessPage() {
+    mainPage.classList.remove('active-page');
+    formPage.classList.remove('active-page');
+    successPage.classList.add('active-page');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  function showHome() {
-    document.getElementById('homePage').style.display = 'block';
-    document.getElementById('formPage').style.display = 'none';
-    document.getElementById('successPage').style.display = 'none';
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  // زر التقديم في الصفحة الرئيسية
+  document.getElementById('showFormBtn').addEventListener('click', showFormPage);
+  // زر العودة من صفحة النموذج
+  document.getElementById('backToHomeBtn').addEventListener('click', showMainPage);
+  // زر العودة من صفحة النجاح
+  document.getElementById('successBackBtn').addEventListener('click', showMainPage);
+
+  // زر فيسبوك (يفتح الرابط المطلوب)
+  const facebookBtn = document.getElementById('facebookBtn');
+  if (facebookBtn) {
+    facebookBtn.addEventListener('click', () => {
+      window.open('https://www.facebook.com/profile.php?id=100079079575222', '_blank');
+    });
   }
 
-  // معالجة إرسال النموذج وإرسال البيانات إلى واتساب (فتح محادثة مع النص المنسق)
-  function handleWhatsAppSubmit(event) {
-    event.preventDefault();
-    const form = event.target;
-    const submitBtn = document.getElementById('submitBtn');
-    
-    // الحصول على القيم
+  // معالجة إرسال النموذج إلى واتساب
+  const TARGET_PHONE = "201027428959"; // 01027428959
+  const form = document.getElementById('applicationForm');
+
+  async function handleWhatsAppSubmit(e) {
+    e.preventDefault();
     const nameInput = form.querySelector('input[name="الاسم"]');
     const phoneInput = form.querySelector('input[name="الهاتف"]');
     const regionSelect = form.querySelector('select[name="المنطقة"]');
-    
+
     const fullName = nameInput.value.trim();
     const userPhone = phoneInput.value.trim();
     const region = regionSelect.value;
-    
-    // التحقق من صحة المدخلات
-    if (!fullName) {
-      alert('⚠️ يرجى إدخال الاسم بالكامل');
-      nameInput.focus();
-      return;
-    }
-    
+
+    if (!fullName) { alert('⚠️ يرجى إدخال الاسم بالكامل'); nameInput.focus(); return; }
     const phoneRegex = /^01[0-9]{9}$/;
-    if (!phoneRegex.test(userPhone)) {
-      alert('⚠️ يرجى إدخال رقم هاتف مصري صحيح مكون من 11 رقمًا ويبدأ بـ 01 (مثال: 01234567890)');
-      phoneInput.focus();
-      return;
-    }
-    
-    if (!region || region === "") {
-      alert('⚠️ يرجى اختيار منطقة الخدمة');
-      regionSelect.focus();
-      return;
-    }
-    
-    // إنشاء نص الرسالة للواتساب
+    if (!phoneRegex.test(userPhone)) { alert('⚠️ يرجى إدخال رقم هاتف مصري صحيح (11 رقم يبدأ بـ 01)'); phoneInput.focus(); return; }
+    if (!region || region === "") { alert('⚠️ يرجى اختيار منطقة الخدمة'); regionSelect.focus(); return; }
+
     const message = `📢 *طلب انضمام جديد من موقع طلبات* 📢%0A%0A👤 *الاسم:* ${fullName}%0A📞 *رقم المتقدم:* ${userPhone}%0A📍 *منطقة الخدمة:* ${region}%0A%0A✅ يرجى التواصل معه لتأكيد التفعيل.`;
-    
-    // بناء رابط واتساب
     const whatsappUrl = `https://wa.me/${TARGET_PHONE}?text=${message}`;
-    
-    // إظهار صفحة النجاح ثم فتح الواتساب في نافذة جديدة
-    document.getElementById('formPage').style.display = 'none';
-    document.getElementById('successPage').style.display = 'block';
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    
-    // فتح رابط واتساب (سينتقل المستخدم للتطبيق أو الويب)
+
+    // إظهار صفحة النجاح ثم فتح الواتساب
+    showSuccessPage();
     window.open(whatsappUrl, '_blank');
-    
-    // (اختياري) إعادة تعيين النموذج بعد فترة قصيرة
-    setTimeout(() => {
-      form.reset();
-    }, 500);
+    form.reset();
   }
 
-  // ربط الحدث للنموذج
-  const formElement = document.getElementById('applicationForm');
-  if (formElement) {
-    formElement.addEventListener('submit', handleWhatsAppSubmit);
-  }
-
-  // التأكد من أن الصفحة الرئيسية ظاهرة فقط في البداية
-  window.onload = function() {
-    document.getElementById('homePage').style.display = 'block';
-    document.getElementById('formPage').style.display = 'none';
-    document.getElementById('successPage').style.display = 'none';
-  };
+  form.addEventListener('submit', handleWhatsAppSubmit);
 </script>
 </body>
 </html>
