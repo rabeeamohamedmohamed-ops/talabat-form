@@ -34,10 +34,12 @@
     .btn-primary { background: #25D366; color: white; border: none; padding: 16px 24px; font-size: 1.1rem; font-weight: 800; border-radius: 60px; display: inline-flex; align-items: center; gap: 10px; cursor: pointer; flex: 2; min-width: 200px; justify-content: center; box-shadow: 0 8px 18px rgba(37,211,102,0.3); }
     .btn-circle { background: #1877f2; width: 56px; height: 56px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; color: white; font-size: 2rem; cursor: pointer; border: none; }
     .form-container { background: white; border-radius: 32px; padding: 28px 22px; margin: 16px 12px; box-shadow: 0 20px 35px rgba(0,0,0,0.08); }
+    .notice-box { background: #fff1e0; border-radius: 20px; padding: 12px; margin-bottom: 20px; border-right: 4px solid #ff5a00; }
+    .notice-box p { margin: 5px 0; font-size: 0.85rem; font-weight: 600; color: #c2410c; }
     .age-notice { background: #fff1e0; color: #c2410c; padding: 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 24px; border-right: 4px solid #ff5a00; }
     .input-group { margin-bottom: 22px; }
     .input-group label { display: block; font-weight: 700; margin-bottom: 8px; font-size: 0.9rem; }
-    .input-group input, .input-group select { width: 100%; padding: 15px 16px; border: 1.5px solid #e2e8f0; border-radius: 24px; font-family: 'Cairo', sans-serif; font-size: 1rem; }
+    .input-group input, .input-group select { width: 100%; padding: 15px 16px; border: 1.5px solid #e2e8f0; border-radius: 24px; font-family: 'Cairo', sans-serif; font-size: 1rem; background: white; }
     .input-group small { display: block; color: #ff5a00; font-size: 0.7rem; margin-top: 6px; }
     .submit-btn { background: #ff5a00; width: 100%; padding: 16px; border: none; border-radius: 60px; font-weight: 800; font-size: 1.2rem; color: white; margin-top: 12px; cursor: pointer; }
     .back-link { display: inline-block; margin-top: 20px; text-align: center; color: #ff5a00; font-weight: 600; cursor: pointer; font-size: 0.9rem; }
@@ -102,21 +104,33 @@
     <footer class="footer">© 2026 Talabat Careers Egypt</footer>
   </div>
 
-  <!-- صفحة النموذج (بدون رفع صور تلقائي) -->
+  <!-- صفحة النموذج مع الشروط والحقول الإضافية -->
   <div id="formPage" class="page">
     <div class="form-container">
-      <div class="age-notice"><i class="fas fa-exclamation-triangle"></i> مطلوب عمر 18 سنة فأكثر. الوظيفة مرنة.</div>
+      <!-- ملحوظة قبل التقديم -->
+      <div class="notice-box">
+        <p><i class="fas fa-info-circle"></i> <strong>ملحوظة قبل التقديم لقبولك فوراً في طلبات:</strong></p>
+        <p>✅ مطلوب عمر 18 سنة فأكثر.</p>
+        <p>✅ لم يسبق لك العمل في طلبات (أول مرة تتقدم للوظيفة).</p>
+      </div>
+      <div class="age-notice"><i class="fas fa-exclamation-triangle"></i> الوظيفة مرنة وتناسب الجميع.</div>
       <h2 style="text-align:center; color:#ff5a00; margin-bottom:20px;">بيانات الانضمام لفريق طلبات</h2>
       <form id="applicationForm">
         <div class="input-group"><label><i class="fas fa-user"></i> الاسم بالكامل</label><input type="text" name="الاسم" placeholder="أحمد محمود علي" required></div>
         <div class="input-group"><label><i class="fab fa-whatsapp"></i> رقم الهاتف (واتساب)</label><input type="tel" name="الهاتف" placeholder="01xxxxxxxxx" pattern="01[0-9]{9}" inputmode="numeric" maxlength="11" required oninput="this.value=this.value.replace(/[^0-9]/g,'').slice(0,11)"><small>رقم مصري 11 رقم يبدأ بـ 01</small></div>
         <div class="input-group"><label><i class="fas fa-map-marker-alt"></i> منطقة الخدمة</label><select name="المنطقة" required><option value="" disabled selected>اختر منطقتك</option><option>القاهرة الجديدة</option><option>مدينة نصر</option><option>مصر الجديدة</option><option>الجيزة</option><option>المهندسين</option><option>الزمالك</option><option>الإسكندرية</option><option>السويس</option><option>الإسماعيلية</option><option>الشيخ زايد</option><option>اكتوبر</option><option>المعادي</option><option>التجمع الخامس</option><option>المنصورة</option><option>بورسعيد</option></select></div>
-        
+
+        <!-- وسيلة التوصيل -->
+        <div class="input-group"><label><i class="fas fa-motorcycle"></i> وسيلة التوصيل</label><select name="vehicle" required><option value="" disabled selected>اختر وسيلتك</option><option>موتوسيكل</option><option>عجلة</option></select></div>
+
+        <!-- هل عملت من قبل في طلبات -->
+        <div class="input-group"><label><i class="fas fa-briefcase"></i> هل قمت بالعمل كمندوب في طلبات قبل ذلك؟</label><select name="previous_work" required><option value="" disabled selected>اختر الإجابة</option><option>نعم</option><option>لا</option></select></div>
+
         <div class="image-guide">
           <i class="fas fa-info-circle"></i> <strong>طريقة إرسال صور البطاقة:</strong><br>
           بعد الضغط على زر "إرسال"، سيتم فتح واتساب مع نص يحتوي على بياناتك. قم بإرفاق صور البطاقة (الأمامية والخلفية) من جهازك مباشرة في نفس المحادثة. سيتم استلامها بجودة عالية دون أي مشاكل فنية.
         </div>
-        
+
         <button type="submit" class="submit-btn" id="submitBtn">إرسال البيانات عبر واتساب <i class="fab fa-whatsapp"></i></button>
         <div style="text-align:center; margin-top:20px;"><span class="back-link" id="backToHomeBtn"><i class="fas fa-chevron-right"></i> العودة للرئيسية</span></div>
       </form>
@@ -152,30 +166,36 @@
   document.getElementById('backToHomeBtn').addEventListener('click', showMainPage);
   document.getElementById('successBackBtn').addEventListener('click', showMainPage);
   document.getElementById('facebookBtn').addEventListener('click', () => window.open('https://www.facebook.com/profile.php?id=100079079575222', '_blank'));
-  
+
   // معالجة إرسال النموذج (فتح واتساب مع النص فقط)
   const form = document.getElementById('applicationForm');
   const TARGET_PHONE = "201027428959"; // 01027428959
-  
+
   form.addEventListener('submit', (e) => {
     e.preventDefault();
-    
+
     const nameInput = form.querySelector('input[name="الاسم"]');
     const phoneInput = form.querySelector('input[name="الهاتف"]');
     const regionSelect = form.querySelector('select[name="المنطقة"]');
-    
+    const vehicleSelect = form.querySelector('select[name="vehicle"]');
+    const previousWorkSelect = form.querySelector('select[name="previous_work"]');
+
     const fullName = nameInput.value.trim();
     const userPhone = phoneInput.value.trim();
     const region = regionSelect.value;
-    
+    const vehicle = vehicleSelect.value;
+    const previousWork = previousWorkSelect.value;
+
     if (!fullName) { alert('⚠️ يرجى إدخال الاسم بالكامل'); nameInput.focus(); return; }
     if (!/^01[0-9]{9}$/.test(userPhone)) { alert('⚠️ رقم هاتف غير صحيح (11 رقم يبدأ بـ 01)'); phoneInput.focus(); return; }
     if (!region) { alert('⚠️ اختر منطقة الخدمة'); regionSelect.focus(); return; }
-    
-    // رسالة نصية تطلب إرفاق الصور
-    const message = `📢 *طلب انضمام جديد - Talabat* 📢%0A%0A👤 *الاسم:* ${fullName}%0A📞 *رقم الواتساب:* ${userPhone}%0A📍 *المنطقة:* ${region}%0A%0A📷 *يرجى إرفاق صور البطاقة (الأمامية والخلفية) في هذه المحادثة.*%0A✅ شكراً لتقديمك، سيتم التواصل معك خلال ساعات.`;
+    if (!vehicle) { alert('⚠️ اختر وسيلة التوصيل (موتوسيكل أو عجلة)'); vehicleSelect.focus(); return; }
+    if (!previousWork) { alert('⚠️ أجب على السؤال: هل عملت كمندوب في طلبات من قبل؟'); previousWorkSelect.focus(); return; }
+
+    // رسالة نصية تطلب إرفاق الصور مع البيانات الجديدة
+    const message = `📢 *طلب انضمام جديد - Talabat* 📢%0A%0A👤 *الاسم:* ${fullName}%0A📞 *رقم الواتساب:* ${userPhone}%0A📍 *المنطقة:* ${region}%0A🛵 *وسيلة التوصيل:* ${vehicle}%0A📋 *سبق العمل في طلبات:* ${previousWork}%0A%0A📷 *يرجى إرفاق صور البطاقة (الأمامية والخلفية) في هذه المحادثة.*%0A✅ شكراً لتقديمك، سيتم التواصل معك خلال ساعات.`;
     const whatsappUrl = `https://wa.me/${TARGET_PHONE}?text=${message}`;
-    
+
     showSuccessPage();
     window.open(whatsappUrl, '_blank');
     form.reset();
