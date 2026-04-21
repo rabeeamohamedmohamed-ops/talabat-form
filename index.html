@@ -93,7 +93,8 @@
       <tr><td class="zone-name">تحرير / اسكندرية</td><td>35</td><td>33</td><td>31</td><td>29</td></tr>
       <tr><td class="zone-name">معادي</td><td>33</td><td>31</td><td>29</td><td>27</td></tr>
       <tr><td class="zone-name">مهندسين</td><td>32</td><td>30</td><td>28</td><td>26</td></tr>
-    </tbody></table></div>
+    </tbody>
+    </table></div>
     <div class="bonus-note"><i class="fas fa-tachometer-alt"></i> <strong>مكافأة المسافات (موتوسيكل):</strong> من 2-5 كم: +1 جنيه/كم، بعد 5 كم: +2 جنيه/كم</div>
     <div class="section-title"><i class="fas fa-bicycle"></i> تسعيرة العجلة</div>
     <div class="table-wrapper"><table class="pricing-table"><thead><tr><th>المنطقة</th><th>باتش1</th><th>باتش2</th><th>باتش3</th><th>باتش4</th></tr></thead><tbody>
@@ -101,7 +102,8 @@
       <tr><td class="zone-name">اسكندرية</td><td>26</td><td>24</td><td>22</td><td>20</td></tr>
       <tr><td class="zone-name">مدينة نصر / مصر الجديدة / عين شمس / أكتوبر / زايد / تحرير</td><td>25</td><td>23</td><td>21</td><td>19</td></tr>
       <tr><td class="zone-name">مهندسين / معادي</td><td>24</td><td>22</td><td>20</td><td>18</td></tr>
-    </tbody></table></div>
+    </tbody>
+    </table></div>
     <div class="section-title"><i class="fas fa-folder-open"></i> الأوراق المطلوبة (مجاني)</div>
     <div class="docs-list"><div class="doc-card"><i class="fas fa-camera"></i><h4>صورة سيلفي</h4></div><div class="doc-card"><i class="fas fa-id-card"></i><h4>البطاقة الشخصية</h4></div><div class="doc-card"><i class="fas fa-tachometer-alt"></i><h4>رخصة المركبة</h4></div></div>
     <div class="cta-row"><button class="btn-primary" id="showFormBtn"><i class="fab fa-whatsapp"></i> للتسجيل فورا والتواصل واتس اب من هنا</button><button class="btn-circle" id="facebookBtn"><i class="fab fa-facebook-f"></i></button></div>
@@ -123,7 +125,25 @@
       <form id="applicationForm">
         <div class="input-group"><label><i class="fas fa-user"></i> الاسم بالكامل</label><input type="text" name="الاسم" placeholder="أحمد محمود علي" required></div>
         <div class="input-group"><label><i class="fab fa-whatsapp"></i> رقم الهاتف (واتساب)</label><input type="tel" name="الهاتف" placeholder="01xxxxxxxxx" pattern="01[0-9]{9}" inputmode="numeric" maxlength="11" required oninput="this.value=this.value.replace(/[^0-9]/g,'').slice(0,11)"><small>رقم مصري 11 رقم يبدأ بـ 01</small></div>
-        <div class="input-group"><label><i class="fas fa-map-marker-alt"></i> منطقة الخدمة</label><select name="المنطقة" required><option value="" disabled selected>اختر منطقتك</option><option>القاهرة الجديدة</option><option>مدينة نصر</option><option>مصر الجديدة</option><option>الجيزة</option><option>المهندسين</option><option>الزمالك</option><option>الإسكندرية</option><option>السويس</option><option>الإسماعيلية</option><option>الشيخ زايد</option><option>اكتوبر</option><option>المعادي</option><option>التجمع الخامس</option><option>المنصورة</option><option>بورسعيد</option></select></div>
+        <div class="input-group"><label><i class="fas fa-map-marker-alt"></i> منطقة الخدمة</label>
+          <select name="المنطقة" required>
+            <option value="" disabled selected>اختر منطقتك</option>
+            <option>اسماعلية</option>
+            <option>اكتوبر</option>
+            <option>الاسكندرية</option>
+            <option>التجمع الجنوبي</option>
+            <option>التحرير</option>
+            <option>الجيزة</option>
+            <option>السويس</option>
+            <option>الشيخ زايد</option>
+            <option>المعادي</option>
+            <option>المنصورة</option>
+            <option>المهندسين</option>
+            <option>عين شمس</option>
+            <option>مدينة نصر</option>
+            <option>مصر الجديدة</option>
+          </select>
+        </div>
         <div class="input-group"><label><i class="fas fa-motorcycle"></i> وسيلة التوصيل</label><select name="vehicle" required><option value="" disabled selected>اختر وسيلتك</option><option>موتوسيكل</option><option>عجلة</option></select></div>
         <div class="input-group"><label><i class="fas fa-briefcase"></i> هل قمت بالعمل كمندوب في طلبات قبل ذلك؟</label><select name="previous_work" required><option value="" disabled selected>اختر الإجابة</option><option>نعم</option><option>لا</option></select></div>
 
